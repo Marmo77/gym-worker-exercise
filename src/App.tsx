@@ -1,15 +1,24 @@
 import { useState } from "react";
+import { Routes, BrowserRouter, Route } from "react-router";
+import Layout from "./components/layout/Layout";
+import UserPage from "./components/UserPage";
 
 function App() {
   return (
     <>
-      <section className="w-full mx-auto flex justify-center bg-action h-54">
-        <div className="bg-border px-5 py-4 w-[1440px] flex flex-col gap-4">
-          <h1 className="text-white text-3xl font-inter">Hello world!</h1>
-          <h1 className="text-red-500 text-3xl font-redhat self-center">Hello world!</h1>
-          <h1 className="text-greener self-end">Green</h1>
-        </div>
-      </section>
+      <BrowserRouter>
+        {/* Poprzednia strona grudzien 2013r. www.autoscan.pl */}
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<UserPage />} />
+            {/*<Route path="serwis" element={<ServicePage />} />
+            <Route path="sprzedaz-samochodow" element={<CarSellingPage />} />
+            <Route path="chip-tuning-vtech" element={<ChipTuningPage />} />
+            <Route path="pomoc-drogowa" element={<ChipTuningPage />} /> */}
+            {/* <Route path="kontakt" element={<ContactPage />} />  */}
+          </Route>
+        </Routes>
+      </BrowserRouter>
     </>
   );
 }
