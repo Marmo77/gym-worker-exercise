@@ -1,0 +1,66 @@
+@import "tailwindcss";
+
+/* DM SANS */
+@font-face {
+  font-family: DmSans;
+  src: url(assets/fonts/dmsans.ttf);
+}
+/* Redhat */
+@font-face {
+  font-family: RedHat;
+  src: url(assets/fonts/redhat.ttf);
+}
+
+/* Geologica Text */
+@font-face {
+  font-family: Geologica, Arial, Helvetica, sans-serif;
+  src: url(assets/fonts/geologica.ttf);
+}
+
+/* Inter sans */
+@font-face {
+  font-family: Inter, serif;
+  src: url(assets/fonts/inter.ttf);
+}
+
+/* Roboto Mono */
+@font-face {
+  font-family: Roboto, Arial, Helvetica, sans-serif;
+  src: url(assets/fonts/RobotoMono.ttf);
+}
+
+/* Lexend Mono */
+@font-face {
+  font-family: Lexend, Arial, Helvetica, sans-serif;
+  src: url(assets/fonts/lexend.ttf);
+}
+
+@theme {
+  /* fonts */
+  --font-dmsans: DMSans;
+  --font-geologica: Geologica;
+  --font-inter: Inter;
+  --font-roboto: Roboto;
+  --font-roboto: Lexend;
+  --font-redhat: RedHat;
+
+  /* colors */   
+  --color-greener: #afffaa;  
+    --color-primary: #0A0A0A;  
+  --color-secondary: #16181C;
+  --color-surface: #1F2125;  
+  --color-highlight: #D4AF37;
+  --color-light: #f0efe7;
+  --color-contrast: #FFFFFF;      
+  --color-muted: #7A828A;       
+  --color-text: #D0D5DA;        
+  --color-border: #3B4045;      
+  --color-action: #C90A02;  
+}
+
+:root {
+  background-color: #242424;
+}
+body{
+  scroll-behavior: smooth;
+}
