@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import Badge from "../ui/Badge";
 import Search from "../ui/Search";
 import DummyUser from "../../storage/Users";
+import { Bell, Settings } from "lucide-react";
 interface MenuItems {
   title: string;
   link: string;
@@ -12,6 +13,10 @@ const MenuProps: MenuItems[] = [
 ];
 
 function Navbar() {
+  const [searchTerm, setSearchTerm] = useState<string>("");
+  const [Notification, setNotification] = useState<boolean>(true);
+  // Function to handle search input changes
+
   return (
     <header className="bg-background shadow-lg backdrop-blur">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -22,10 +27,26 @@ function Navbar() {
           </a>
           <div className="flex items-center gap-4">
             {/* SEARCHBAR */}
-            <Search />
-            <a href="/user">
-              <Badge name={DummyUser.name} status={DummyUser.status} />
-            </a>
+            <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+            <div className="flex gap-3 items-center">
+              <button className="px-2 py-1.5 rounded-lg text-accent-foreground shadow-md hover:bg-accent hover:scale-105 group transition-transform duration-300 relative" 
+              onClick={() => setNotification(false)}>
+                {Notification && (
+                  <span className="absolute notification-loop top-0 right-0 w-2 h-2 z-50 rounded-full group " />
+                )}
+                <Bell className="img-small group-hover:scale-105 group-hover:rotate-3 text-accent-foreground" />
+              </button>
+              <button className="px-2 py-1.5 rounded-lg text-accent-foreground shadow-md hover:bg-accent group transition-colors duration-300">
+                <Settings
+                  className="img-small
+                group-hover:scale-105 group-hover:rotate-3 text-accent-foreground"
+                />
+              </button>
+              {/* USER BADGE */}
+              <a href="/user">
+                <Badge name={DummyUser.name} status={DummyUser.status} />
+              </a>
+            </div>
           </div>
         </div>
       </div>

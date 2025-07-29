@@ -191,6 +191,27 @@
   @apply w-8 h-8 text-accent;
 }
 
+@layer utilities {
+  @keyframes notification-loop {
+    from {
+      background-color: var(--color-admin);
+    }
+    50% {
+      background-color: var(--color-admin/30);
+      rotate: 3;
+      scale: 115%;
+      transition: all;
+    }
+    to {
+      background-color: var(--color-admin);
+    }
+  }
+
+  .notification-loop {
+    animation: notification-loop 2s infinite ease-in-out;
+  }
+}
+
 
 :root {
   background-color: var(--color-background);
