@@ -13,7 +13,7 @@ const MenuProps: MenuItems[] = [
 
 function Navbar() {
   return (
-    <header className="bg-background shadow-xl shadow-accent">
+    <header className="bg-background shadow-lg backdrop-blur">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center gap-3">
@@ -23,7 +23,7 @@ function Navbar() {
           <div className="flex items-center gap-4">
             {/* SEARCHBAR */}
             <Search />
-            <Badge name={DummyUser.name} premium={DummyUser.premium} />
+            <Badge name={DummyUser.name} status={DummyUser.status} />
           </div>
         </div>
       </div>

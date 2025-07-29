@@ -1,28 +1,28 @@
-// USER PROFILE BADGE
-import React, { useState, useEffect } from "react";
-// import clsx from "clsx";
-import DummyUser, { type User } from "../../storage/Users";
+import React, { useEffect, useState } from "react";
+import type { User, UserInfo } from "../../storage/Users";
 
 const badgeStyles = {
-  free: "border-transparent bg-primary text-primary-foreground hover:bg-primary/90",
-  premium:
-    "border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/90",
+  user: "bg-primary text-white hover:bg-primary/90",
+  premium: "bg-yellow-400 text-black hover:bg-yellow-400/80",
+  admin: "bg-red-600 text-white hover:bg-red-700",
 };
 
-const Badge = ({ name, premium = false }: User) => {
-  const [isPremium, setIsPremium] = useState(false);
+const Badge = ({ name, status = "user" }: UserInfo) => {
+  const [role, setRole] = useState<"user" | "premium" | "admin">("user");
 
-  useEffect(() => setIsPremium(premium), []);
-  // const style = badgeStyles[variant];
+  useEffect(() => {
+    if (status == "admin") setRole("admin");
+    else if (status == "premium") setRole("premium");
+    else setRole("user");
+  }, [status]);
+
   return (
-    // <div className={clsx("inline-flex items-center gap-2 px-4 py-1 rounded-md text-sm font-medium", style)}>
     <div
-      className={`inline-flex items-center gap-2 px-4 py-1 rounded-md text-sm font-medium ${
-        isPremium ? badgeStyles.premium : badgeStyles.free
-      }`}
+      className={`inline-flex items-center gap-2 px-4 py-1 rounded-md text-sm font-medium transition-all duration-200 ${badgeStyles[role]}`}
     >
-      <span>{name}</span>
-      {premium && <span className="text-yellow-400">★</span>}
+      <span className="text-text">{name}</span>
+      {role === "premium" && <span className="text-white">★</span>}
+      {role === "admin" && <span className="text-white font-bold">👑</span>}
     </div>
   );
 };
