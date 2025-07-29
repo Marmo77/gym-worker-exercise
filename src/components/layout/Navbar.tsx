@@ -29,14 +29,16 @@ function Navbar() {
             {/* SEARCHBAR */}
             <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
             <div className="flex gap-3 items-center">
-              <button className="px-2 py-1.5 rounded-lg text-accent-foreground shadow-md hover:bg-accent hover:scale-105 group transition-transform duration-300 relative" 
-              onClick={() => setNotification(false)}>
+              <button
+                className="px-2 py-1.5 rounded-lg text-accent-foreground shadow-md hover:bg-accent hover:scale-105 group transition-transform duration-300 relative click-pressed"
+                onClick={() => setNotification(false)}
+              >
                 {Notification && (
                   <span className="absolute notification-loop top-0 right-0 w-2 h-2 z-50 rounded-full group " />
                 )}
                 <Bell className="img-small group-hover:scale-105 group-hover:rotate-3 text-accent-foreground" />
               </button>
-              <button className="px-2 py-1.5 rounded-lg text-accent-foreground shadow-md hover:bg-accent group transition-colors duration-300">
+              <button className="px-2 py-1.5 rounded-lg text-accent-foreground shadow-md hover:bg-accent group transition-colors duration-300 click-pressed">
                 <Settings
                   className="img-small
                 group-hover:scale-105 group-hover:rotate-3 text-accent-foreground"

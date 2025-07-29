@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Routes, BrowserRouter, Route } from "react-router";
 import Layout from "./components/layout/Layout";
+import UserProfileLayout from "./components/layout/UserProfileLayout";
 import MainPage from "./components/MainPage";
 import UserPanel from "./components/UserPanel";
 
@@ -12,13 +13,15 @@ function App() {
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<MainPage />} />
+          </Route>
+          <Route path="/user" element={<UserProfileLayout />}>
             <Route path="user" element={<UserPanel />} />
-            {/*<Route path="serwis" element={<ServicePage />} />
+          </Route>
+          {/*<Route path="serwis" element={<ServicePage />} />
             <Route path="sprzedaz-samochodow" element={<CarSellingPage />} />
             <Route path="chip-tuning-vtech" element={<ChipTuningPage />} />
             <Route path="pomoc-drogowa" element={<ChipTuningPage />} /> */}
-            {/* <Route path="kontakt" element={<ContactPage />} />  */}
-          </Route>
+          {/* <Route path="kontakt" element={<ContactPage />} />  */}
         </Routes>
       </BrowserRouter>
     </>

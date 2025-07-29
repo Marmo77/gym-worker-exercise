@@ -184,6 +184,10 @@
 
 
 }
+.click-pressed {
+  @apply active:scale-90 cursor-pointer duration-300 transition-all;
+}
+
 @utility img-small{
   @apply w-4 h-4 text-accent;
 }

@@ -18,7 +18,7 @@ const Badge = ({ name, status = "user" }: UserInfo) => {
 
   return (
     <div
-      className={`inline-flex items-center gap-2 px-4 py-1 rounded-md text-sm font-medium transition-all duration-200 ${badgeStyles[role]}`}
+      className={`inline-flex click-pressed items-center gap-2 px-4 py-1 rounded-md text-sm font-medium transition-all duration-200 ${badgeStyles[role]}`}
     >
       <span className="text-text">{name}</span>
       {role === "premium" && <span className="text-white">★</span>}
