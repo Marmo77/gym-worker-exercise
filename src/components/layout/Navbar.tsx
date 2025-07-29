@@ -16,14 +16,16 @@ function Navbar() {
     <header className="bg-background shadow-lg backdrop-blur">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          <div className="flex items-center gap-3">
+          <a className="flex items-center gap-3" href="/">
             <img src="dumbbell.svg" alt="Icon site" className="w-8 h-8" />
             <h1 className="text-xl font-bold text-gray-900">GymPro</h1>
-          </div>
+          </a>
           <div className="flex items-center gap-4">
             {/* SEARCHBAR */}
             <Search />
-            <Badge name={DummyUser.name} status={DummyUser.status} />
+            <a href="/user">
+              <Badge name={DummyUser.name} status={DummyUser.status} />
+            </a>
           </div>
         </div>
       </div>

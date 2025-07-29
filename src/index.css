@@ -127,6 +127,9 @@
   & p{
     @apply text-muted-foreground text-xs px-4 font-dmsans
   }
+  & .card_stats{
+    @apply md:grid-cols-3 grid-cols-1 md:gap-4 grid px-12 justify-center items-center text-center
+  }
 }
 @layer card-element{
   .card-element{
@@ -151,9 +154,9 @@
 
 @layer quick_action{
   .quick-action{
-    @apply grid grid-cols-2 items-center;
+    @apply grid md:grid-cols-2 grid-cols-1 items-center;
   & ._btn{
-    @apply rounded-2xl px-2 py-2 flex flex-col items-center gap-1
+    @apply rounded-2xl px-2 py-2 flex flex-col items-center gap-1 cursor-pointer
   }
   & h2{
     @apply font-poppins text-sm text-accent;
@@ -165,6 +168,21 @@
   }
   
 }
+@layer sections{
+  .section{
+    @apply max-w-7xl px-14 mx-auto flex flex-col mt-18;
+
+  & h1{
+    @apply text-3xl font-semibold
+  }
+  & p{
+    @apply text-lg font-light ml-2 text-muted-foreground;
+  }
+  }
+}
+
+
+
 }
 @utility img-small{
   @apply w-4 h-4 text-accent;
@@ -175,7 +193,8 @@
 
 
 :root {
-  background-color: #242424;
+  background-color: var(--color-background);
+  font-family: "Roboto","DMSans", "Poppins";
 }
 body{
   scroll-behavior: smooth;

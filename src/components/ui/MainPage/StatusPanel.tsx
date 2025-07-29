@@ -25,7 +25,7 @@ const StatusPanel = () => {
           </div>
           <p>Overview your statistics</p>
         </div>
-        <div className="grid-cols-3 gap-4 grid px-12 justify-center items-center text-center">
+        <div className="card_stats">
           <div className="card-element">
             <Dumbbell className="_img" />
             <h3>{DummyUser.exercise_completed || 0}</h3>
@@ -45,7 +45,7 @@ const StatusPanel = () => {
         </div>
       </div>
       {/* QUICK ACTIONS */}
-      <div className="grid card grid-cols-3 gap-4">
+      <div className="card">
         <div className="__header">
           <div className="__title">
             <CirclePlus className="__img" />
