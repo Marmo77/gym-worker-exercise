@@ -69,7 +69,7 @@
   --color-accent-foreground: #030213;
 
   --color-premium:  #FFC700;
-  --color-premium-hover:  #ffc700cc;
+  --color-premium-hover:  #F2B233;
 
   --color-admin: #fb2c36;
   --color-admin-hover: #82181a;
@@ -109,7 +109,9 @@
     flex-direction: column;
     /* box-shadow: var(--drop-shadow-lg); */
     gap: 1.5rem;
-    @apply md:min-h-auto min-h-48 drop-shadow-lg hover:shadow-xl duration-200 ease-in-out;
+    @apply 
+    md:min-h-auto 
+    min-h-48 drop-shadow-lg hover:shadow-xl duration-200 ease-in-out;
   
   & .__header{
       @apply flex flex-col gap-1 selection:bg-admin;
@@ -172,15 +174,23 @@
   .section{
     @apply max-w-7xl px-14 mx-auto flex flex-col mt-18;
 
-  & h1{
-    @apply text-3xl font-semibold
-  }
-  & p{
-    @apply text-lg font-light ml-2 text-muted-foreground;
-  }
   }
 }
-
+@layer profile_card{
+  .profile-card{
+    background-color: var(--card);
+    border: 1px solid var(--border);
+    /* border-radius: 1.75rem; */
+    /* padding: .75rem 1.75rem; */
+    display: flex;
+    flex-direction: column;
+    /* box-shadow: var(--drop-shadow-lg); */
+    gap: 1.5rem;
+    @apply 
+    md:min-h-auto 
+    min-h-48 drop-shadow-lg hover:shadow-xl duration-200 ease-in-out;
+  }
+}
 
 
 }

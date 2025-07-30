@@ -14,7 +14,7 @@ const MainPage = () => {
     <section className="bg-background w-full">
       <div className="section">
         {/* WELCOME BACK */}
-        <h1>
+        <h1 className="text-3xl font-semibold">
           Welcome back{" "}
           <span
             className={`font-black ${
@@ -29,7 +29,7 @@ const MainPage = () => {
           </span>
           !
         </h1>
-        <p>
+        <p className="text-lg font-light ml-2 text-muted-foreground">
           Menage exercises and show others your achievements and fitness goals.
         </p>
         {/* ADMIN PANEL SHOW */}
