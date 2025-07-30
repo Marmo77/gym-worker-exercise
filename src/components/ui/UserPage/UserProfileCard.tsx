@@ -1,8 +1,9 @@
-import React from "react";
+import React, { use } from "react";
 // import DummyUser, { type User } from "../../../storage/Users";
 import { Mail, CalendarFold, MapPin } from "lucide-react";
 
 interface UserProfileCardProps {
+  username: string;
   name: string;
   status: string;
   avatarUrl: string;
@@ -12,9 +13,11 @@ interface UserProfileCardProps {
   data_of_join?: Date | string;
   onFollow: () => void;
   onMessage: () => void;
+  onEdit: () => void;
 }
 // ...existing code...
 const UserProfileCard: React.FC<UserProfileCardProps> = ({
+  username,
   name,
   status,
   avatarUrl,
@@ -24,6 +27,7 @@ const UserProfileCard: React.FC<UserProfileCardProps> = ({
   stats,
   onFollow,
   onMessage,
+  onEdit,
 }) => {
   return (
     <section className="w-7xl mx-auto section">
@@ -42,7 +46,7 @@ const UserProfileCard: React.FC<UserProfileCardProps> = ({
             />
             <div className="flex flex-col gap-1">
               <h2
-                className={`text-2xl font-poppins font-bold ${
+                className={`text-2xl flex gap-2 items-center font-poppins font-bold ${
                   status === "admin"
                     ? "text-admin"
                     : status === "premium"
@@ -50,7 +54,10 @@ const UserProfileCard: React.FC<UserProfileCardProps> = ({
                     : "text-foreground"
                 }`}
               >
-                {name}
+                {name}{" "}
+                <span className="text-muted font-dmsans font-light text-xs">
+                  @{username}
+                </span>
               </h2>
               <p
                 className={`capitalize  ml-2 ${
@@ -97,7 +104,10 @@ const UserProfileCard: React.FC<UserProfileCardProps> = ({
                 )}
               </div>
               <div className="flex px-6 py-1">
-                <button className="px-3 py-1 bg-premium text-accent font-poppins rounded-xl click-pressed hover:bg-premium-hover">
+                <button
+                  className="px-3 py-1 bg-premium text-accent font-poppins rounded-xl click-pressed hover:bg-premium-hover"
+                  onClick={onEdit}
+                >
                   Edit Profile
                 </button>
               </div>

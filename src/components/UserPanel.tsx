@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import DummyUser from "../storage/Users";
 import UserProfileCard from "./ui/UserPage/UserProfileCard";
+import EditProfil from "./ui/UserPage/EditProfil";
 
 const UserPanel = () => {
+  const [editOpen, setEditOpen] = useState(false);
+
   // Prepare stats array
   const stats = [
     { label: "Exercises", value: DummyUser.exercise_completed ?? 0 },
@@ -13,6 +16,7 @@ const UserPanel = () => {
   return (
     <>
       <UserProfileCard
+        username={DummyUser.username}
         name={DummyUser.name}
         status={DummyUser.status ?? "user"}
         avatarUrl="/imgs/dummy1.jpg"
@@ -22,7 +26,9 @@ const UserPanel = () => {
         stats={stats}
         onFollow={() => alert("Followed!")}
         onMessage={() => alert("Message sent!")}
+        onEdit={() => setEditOpen(!editOpen)}
       />
+      <EditProfil open={editOpen} onOpenChange={setEditOpen} />
     </>
   );
 };
