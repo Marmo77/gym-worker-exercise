@@ -23,6 +23,7 @@ const EditProfil = ({
 }) => {
   const [name, setName] = useState(DummyUser.name);
   const [email, setEmail] = useState<string>(DummyUser.email);
+  const [validEmail, setValidEmail] = useState(true);
 
   const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setName(e.target.value); //on every letter change the state of name
@@ -40,9 +41,17 @@ const EditProfil = ({
 
   const ValidateEmail = () => {
     if (email.includes("@")) {
-      email.charAt();
-      return true;
+      if (email.slice(email.search("@"), email.length).includes(".")) {
+        setValidEmail(true);
+        console.log("EMAIL jest: ", validEmail);
+        console.log("zawiera . po");
+        return true;
+      } else {
+        setValidEmail(false);
+      }
     } else {
+      setValidEmail(false);
+      console.log("EMAIL jest: ", validEmail);
       console.log("Email not corrected");
       return false;
     }
@@ -67,8 +76,8 @@ const EditProfil = ({
           <DialogDescription>
             Make changes to your profile here. Click save when you're done.
           </DialogDescription>
-          <div className="grid gap-3">
-            <Label htmlFor="name-1">Name</Label>
+          <div className="grid gap-2">
+            <Label htmlFor="username-1">Name</Label>
             <Input
               id="name-1"
               name="name"
@@ -90,7 +99,7 @@ const EditProfil = ({
               </span>
             </div>
             <div className="grid gap-3">
-              <Label htmlFor="email-1">Email</Label>
+              <Label htmlFor="username-1">Email</Label>
               <Input
                 id="email-1"
                 type="email"
@@ -100,6 +109,11 @@ const EditProfil = ({
                 onChange={handleEmailChange}
               />
             </div>
+            {validEmail == false && (
+              <span className="text-xs px-4 text-admin">
+                Your email is not valid.
+              </span>
+            )}
           </div>
           <DialogFooter>
             <Button type="submit" onClick={handleSave}>
