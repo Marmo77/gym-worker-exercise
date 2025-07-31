@@ -13,6 +13,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
 import DummyUser from "@/storage/Users";
+import { ChangeCountry } from "./ChangeCoutry";
 
 const EditProfil = ({
   open,
@@ -23,6 +24,7 @@ const EditProfil = ({
 }) => {
   const [name, setName] = useState(DummyUser.name);
   const [email, setEmail] = useState<string>(DummyUser.email);
+  const [country, setCountry] = useState<string>(DummyUser.localization);
   const [validEmail, setValidEmail] = useState(true);
 
   const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -64,13 +66,18 @@ const EditProfil = ({
       console.log("Email changed to: " + email);
       DummyUser.name = name; // Update the name
       DummyUser.email = email; // Update the email
+      DummyUser.localization = country;
       onOpenChange(!open);
     }
+  };
+  const handleCountryChange = (selectedCountry: string) => {
+    setCountry(selectedCountry);
+    console.log("Country:", selectedCountry);
   };
 
   return (
     <Dialog open={open} onOpenChange={handleClose}>
-      <DialogContent className="sm:max-w-[425px]">
+      <DialogContent className="sm:max-w-[550px]">
         <DialogHeader>
           <DialogTitle>Edit profile</DialogTitle>
           <DialogDescription>
@@ -114,6 +121,10 @@ const EditProfil = ({
                 Your email is not valid.
               </span>
             )}
+            <div className="grid gap-3">
+              <Label htmlFor="username-1">Country</Label>
+              <ChangeCountry country={country} onChange={handleCountryChange} />
+            </div>
           </div>
           <DialogFooter>
             <Button type="submit" onClick={handleSave}>

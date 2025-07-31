@@ -8,11 +8,15 @@ export interface UserInfo {
   name: string;
   status?: "user" | User["status"];
   email: string;
-  exercise_completed?: number;
-  localization?: string;
-  friends?: string[];
-  days_on_app?: number;
+  exercise_completed: number;
+  localization: string;
+  friends: string[];
+  days_on_app: number;
   data_of_join?: Date | string;
+}
+export interface UserInfoBadge {
+  username: User["username"];
+  status: User["status"];
 }
 
 function createUser(user: UserInfo): UserInfo {

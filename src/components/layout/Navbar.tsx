@@ -46,7 +46,10 @@ function Navbar() {
               </button>
               {/* USER BADGE */}
               <a href="/user">
-                <Badge name={DummyUser.username} status={DummyUser.status} />
+                <Badge
+                  username={DummyUser.username}
+                  status={DummyUser.status ?? "user"}
+                />
               </a>
             </div>
           </div>

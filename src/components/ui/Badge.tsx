@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import type { User, UserInfo } from "../../storage/Users";
+import type { User, UserInfo, UserInfoBadge } from "../../storage/Users";
 
 const badgeStyles = {
   user: "bg-primary text-white hover:bg-primary/90",
@@ -7,7 +7,7 @@ const badgeStyles = {
   admin: "bg-red-600 text-white hover:bg-red-700",
 };
 
-const Badge = ({ name, status = "user" }: UserInfo) => {
+const Badge = ({ username, status = "user" }: UserInfoBadge) => {
   const [role, setRole] = useState<"user" | "premium" | "admin">("user");
 
   useEffect(() => {
@@ -20,7 +20,7 @@ const Badge = ({ name, status = "user" }: UserInfo) => {
     <div
       className={`inline-flex click-pressed items-center gap-2 px-4 py-1 rounded-md text-sm font-medium transition-all duration-200 ${badgeStyles[role]}`}
     >
-      <span className="text-text">{name}</span>
+      <span className="text-text">{username}</span>
       {role === "premium" && <span className="text-white">★</span>}
       {role === "admin" && <span className="text-white font-bold">👑</span>}
     </div>
