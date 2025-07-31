@@ -25,7 +25,7 @@ const MainPage = () => {
                 : "text-text"
             }`}
           >
-            {DummyUser.name}
+            {DummyUser.username}
           </span>
           !
         </h1>
