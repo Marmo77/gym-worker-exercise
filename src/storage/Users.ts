@@ -7,7 +7,7 @@ export interface UserInfo {
   username: User["username"];
   name: string;
   status?: "user" | User["status"];
-  email?: string;
+  email: string;
   exercise_completed?: number;
   localization?: string;
   friends?: string[];
