@@ -55,14 +55,15 @@ const Categories = () => {
     },
     {
       title: "Cardio",
-      description: "Improve cardiovascular health",
+      description: "Improve cardiovascular health, HIIT",
       icon: <Heart className="img-big" />,
       color: "chart-2",
       count: 28,
     },
     {
-      title: "HIIT",
-      description: "High-intensity interval training",
+      title: "Plyometrics",
+      description:
+        "Powerful, explosive movements to increase muscle power and speed",
       icon: <Timer className="img-big" />,
       color: "chart-3",
       count: 22,
@@ -104,7 +105,10 @@ const Categories = () => {
         {categories.map((cat, i) => (
           <div key={i} className="exercise_category group click-pressed ">
             <div className="flex max-sm:flex-col gap-4 items-center justify-between max-sm:justify-center">
-              <div className={`p-3 rounded-2xl shadow-lg bg-${cat.color}`}>
+              <div
+                className={`p-3 rounded-2xl shadow-lg`}
+                style={{ backgroundColor: `var(--color-${cat.color})` }}
+              >
                 {cat.icon}
               </div>
               <div className="text-xs font-bold bg-blue-100 text-blue-800 px-3 py-1 rounded-2xl">
@@ -116,7 +120,8 @@ const Categories = () => {
               <div className="text-xs text-gray-500">{cat.description}</div>
             </div>
             <div
-              className={`h-1 rounded-full bg-${cat.color} md:group-hover:w-[75%] max-sm:mx-auto duration-500 transition-all w-[55%]`}
+              className={`h-1 rounded-full md:group-hover:w-[75%] max-sm:mx-auto duration-500 transition-all w-[55%]`}
+              style={{ backgroundColor: `var(--color-${cat.color})` }}
             ></div>
           </div>
         ))}

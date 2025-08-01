@@ -194,9 +194,14 @@
   }
 }
 
-@layer exercise_category{
+@layer exercises{
   .exercise_category{
     @apply bg-white rounded-3xl shadow-md hover:shadow-xl hover:scale-105 hover:drop-shadow-2xl transition-all duration-500 p-4 flex flex-col justify-between gap-4;
+  }
+  .featured_exercises{
+    border: 1px solid var(--border);
+    @apply
+     bg-white border-border rounded-xl shadow-md hover:shadow-xl hover:-translate-y-2 hover:drop-shadow-xl transition-all duration-400 p-4
   }
 }
 
@@ -233,6 +238,12 @@
   }
 }
 
+:root{
+  --color-chart-1: #2b7fff;
+  --color-chart-2: #00c950;
+  --color-chart-3: #ad46ff;
+  --color-chart-4: #ff6900;
+}
 /* :root { */
   /* background-color: var(--color-background); */
   /* font-family: "Poppins""Roboto","DMSans", "Poppins"; */

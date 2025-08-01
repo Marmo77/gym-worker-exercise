@@ -4,6 +4,7 @@ import DummyUser from "../storage/Users";
 import StatusPanel from "./ui/MainPage/StatusPanel";
 import AdminPanel from "./AdminPanel";
 import Categories from "./ui/MainPage/Categories";
+import FeaturedExercises from "./ui/MainPage/FeaturedExercises";
 
 const MainPage = () => {
   return (
@@ -39,6 +40,7 @@ const MainPage = () => {
       </div>
       <div className="section">
         {/* 2. CREATE COMPONENT "Featured Exercises" - GIVE *RANDOM* 4 exercises  and add  BUTTON "View ALL" EXERCISE and LIST OF ALLEXERCISE (https://api.api-ninjas.com/v1/allexercises) WITH FILTER ON MUSCLE GROUPS AND DIFFICULTY */}
+        <FeaturedExercises />
       </div>
     </section>
   );
