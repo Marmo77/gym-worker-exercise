@@ -1,4 +1,5 @@
 @import  url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
 @import "tailwindcss";
 
@@ -48,6 +49,7 @@
   --font-lexend: Lexend;
   --font-redhat: RedHat;
   --font-poppins: 'Poppins', RedHat;
+  --font-montserrat: "Montserrat", Arial;
   /* Light Theme Colors */
   --color-background: #fdfdfd;
   --color-foreground: oklch(0.145 0 0);
@@ -75,6 +77,7 @@
 
   --color-admin: #fb2c36;
   --color-admin-hover: #82181a;
+
 
   --color-border: rgba(0, 0, 0, 0.1);
   --color-input: transparent;
