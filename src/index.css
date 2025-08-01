@@ -49,7 +49,7 @@
   --font-redhat: RedHat;
   --font-poppins: 'Poppins', RedHat;
   /* Light Theme Colors */
-  --color-background: #ffffff;
+  --color-background: #fdfdfd;
   --color-foreground: oklch(0.145 0 0);
 
   --card: oklch(0.985 0 0);
@@ -191,6 +191,12 @@
     @apply 
     md:min-h-auto 
     min-h-48 drop-shadow-lg hover:shadow-xl duration-200 ease-in-out;
+  }
+}
+
+@layer exercise_category{
+  .exercise_category{
+    @apply bg-white rounded-3xl shadow-md hover:shadow-xl hover:scale-105 hover:drop-shadow-2xl transition-all duration-500 p-4 flex flex-col justify-between gap-4;
   }
 }
 
