@@ -13,7 +13,7 @@ import {
 import DummyUser from "../../../storage/Users";
 const StatusPanel = () => {
   return (
-    <div className="grid md:grid-cols-2 md:h-auto gap-4 grid-cols-1">
+    <div className="grid md:grid-cols-2 grid-cols-1 md:h-auto gap-4">
       {/* MAIN USER GYM */}
 
       {/* STATISTICS */}
@@ -76,13 +76,15 @@ const StatusPanel = () => {
           </button>
         </div>
       </div>
-      {/* Quick action panel */}
-      <div className="card">
-        <div className="__header">
-          <h1 className="">Admin</h1>
-          <p className="">Overwie</p>
+      {/* ADMIN PANEL */}
+      {DummyUser.status == "admin" && (
+        <div className="card md:col-span-2">
+          <div className="__header">
+            <h1 className="">Admin</h1>
+            <p className="">Overwie</p>
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };

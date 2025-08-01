@@ -1,4 +1,5 @@
 @import  url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
 @import "tailwindcss";
 
@@ -48,8 +49,9 @@
   --font-lexend: Lexend;
   --font-redhat: RedHat;
   --font-poppins: 'Poppins', RedHat;
+  --font-montserrat: "Montserrat", Arial;
   /* Light Theme Colors */
-  --color-background: #ffffff;
+  --color-background: #fdfdfd;
   --color-foreground: oklch(0.145 0 0);
 
   --card: oklch(0.985 0 0);
@@ -75,6 +77,7 @@
 
   --color-admin: #fb2c36;
   --color-admin-hover: #82181a;
+
 
   --color-border: rgba(0, 0, 0, 0.1);
   --color-input: transparent;
@@ -194,6 +197,17 @@
   }
 }
 
+@layer exercises{
+  .exercise_category{
+    @apply bg-white rounded-3xl shadow-md hover:shadow-xl hover:scale-105 hover:drop-shadow-2xl transition-all duration-500 p-4 flex flex-col justify-between gap-4;
+  }
+  .featured_exercises{
+    border: 1px solid var(--border);
+    @apply
+     bg-white border-border rounded-xl shadow-md hover:shadow-xl hover:-translate-y-2 hover:drop-shadow-xl transition-all duration-400 p-4
+  }
+}
+
 }
 .click-pressed {
   @apply active:scale-90 cursor-pointer duration-300 transition-all;
@@ -227,6 +241,12 @@
   }
 }
 
+:root{
+  --color-chart-1: #2b7fff;
+  --color-chart-2: #00c950;
+  --color-chart-3: #ad46ff;
+  --color-chart-4: #ff6900;
+}
 /* :root { */
   /* background-color: var(--color-background); */
   /* font-family: "Poppins""Roboto","DMSans", "Poppins"; */
