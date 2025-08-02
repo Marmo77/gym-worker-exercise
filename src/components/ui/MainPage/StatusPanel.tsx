@@ -12,6 +12,7 @@ import {
   Target,
 } from "lucide-react";
 import DummyUser from "../../../storage/Users";
+import AdminPanel from "@/components/AdminPanel";
 const quickactions = [
   {
     title: "Add Exercise",
@@ -95,12 +96,10 @@ const StatusPanel = () => {
         </div>
       </div>
       {/* ADMIN PANEL */}
+      {/* ADMIN PANEL SHOW */}
       {DummyUser.status == "admin" && (
         <div className="card md:col-span-2">
-          <div className="__header">
-            <h1 className="">Admin</h1>
-            <p className="">Overwie</p>
-          </div>
+          <AdminPanel />
         </div>
       )}
     </div>

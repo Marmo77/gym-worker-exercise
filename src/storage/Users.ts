@@ -38,11 +38,11 @@ function createUser(user: UserInfo): UserInfo {
 //   localization: "Germany",
 // });
 const DummyUser = createUser({
-  username: "Firka2020",
-  name: "SebaMafia96",
+  username: "Admin123",
+  name: "SuperAdmin",
   status: "admin",
-  email: "sebamiłek@gmail.com",
-  exercise_completed: 99,
+  email: "johndeer@gmail.com",
+  exercise_completed: 95,
   friends: ["john_tomato22", "petrchecz", "mariusz_pudzianator"],
   days_on_app: 30,
   data_of_join: "2009-08-23",
