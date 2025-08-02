@@ -23,11 +23,26 @@ And track progress of your friends too! 🪩🥳
 
 ---
 
+### State for: 02.08.2025: 💻
+- !*Now there is not any database, I work on DummyUser data* (
+ const DummyUser = createUser({
+  username: "Admin123",
+  ...
+  )
+- # Now we are adding new features such as:
+    - functional user training plan when user can add exercises to a plan and select that he already make this exercise and set how many series he did and how much weight/time and stop training after stoping training. The statistic of this are *inserted* to a database *fn fakedatabase*, and modifited to increase user stats.
+    - Add some things to User Panel
+    - Adding/Deleting exercises to user Training plan.
+    - buttons to featrueExercises to add to user training plan
+    - Create whole login/signin page with functionalities.
+    - Create more users and possiblity to find users and add to friends.
+
+
 ### 📸 Screenshots
-[snippet_img1](public/snippets/snippet1.jpg)
-[snippet_img2](public/snippets/snippet2.jpg)
-[snippet_img3](public/snippets/snippet3.jpg)
-[snippet_img4](public/snippets/snippet4.jpg)
+![snippet_img1](./public/snippets/snippet1.jpg)
+![snippet_img2](public/snippets/snippet2.jpg)
+![snippet_img3](public/snippets/snippet3.jpg)
+![snippet_img4](public/snippets/snippet4.jpg)
 
 ---
 
@@ -58,9 +73,9 @@ And track progress of your friends too! 🪩🥳
   npm install
   ```
 3. **Run the app!**
-    ```
-    npm run dev
-    ```
+  ```
+  npm run dev
+  ```
 
 ---
 
