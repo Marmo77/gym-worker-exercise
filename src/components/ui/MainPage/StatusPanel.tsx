@@ -85,7 +85,7 @@ const StatusPanel = () => {
           {quickactions.map((item, index) => (
             <button
               key={index}
-              className={`hover:-translate-y-0.5 transition-all duration-300 _btn click-pressed ${item.button_color}`}
+              className={`hover:-translate-y-0.5 transition-all duration-500 _btn click-pressed ${item.button_color}`}
             >
               {item.icon}
               <h2>{item.title}</h2>
