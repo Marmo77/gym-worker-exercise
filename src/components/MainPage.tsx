@@ -29,8 +29,6 @@ const MainPage = () => {
         <p className="text-lg font-light ml-2 text-muted-foreground">
           Menage exercises and show others your achievements and fitness goals.
         </p>
-        {/* ADMIN PANEL SHOW */}
-        {DummyUser.status === "admin" && <AdminPanel />}
       </div>
       <div className="section">
         <StatusPanel />
