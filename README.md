@@ -24,10 +24,10 @@ And track progress of your friends too! 🪩🥳
 ---
 
 ### 📸 Screenshots
--[snippet_img1](public/snippets/snippet1.jpg)
--[snippet_img2](public/snippets/snippet2.jpg)
--[snippet_img3](public/snippets/snippet3.jpg)
--[snippet_img4](public/snippets/snippet4.jpg)
+[snippet_img1](public/snippets/snippet1.jpg)
+[snippet_img2](public/snippets/snippet2.jpg)
+[snippet_img3](public/snippets/snippet3.jpg)
+[snippet_img4](public/snippets/snippet4.jpg)
 
 ---
 
