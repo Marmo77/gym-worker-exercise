@@ -9,11 +9,40 @@ import {
   UserPlus,
   CalendarCheck,
   ChartColumnIncreasing,
+  Target,
 } from "lucide-react";
 import DummyUser from "../../../storage/Users";
+import AdminPanel from "@/components/AdminPanel";
+const quickactions = [
+  {
+    title: "Add Exercise",
+    description: "Create new exercise",
+    icon: <Plus className="img-small" />,
+    button_color: "bg-chart-1/90 hover:bg-chart-1 ",
+  },
+  {
+    title: "Add Friend",
+    description: "Search & add your friends",
+    icon: <UserPlus className="img-small" />,
+    button_color: "bg-chart-2/90 hover:bg-chart-2 ",
+  },
+  {
+    title: "Schedule",
+    description: "View your calendary",
+    icon: <CalendarCheck className="img-small" />,
+    button_color: "bg-chart-3/90 hover:bg-chart-3 ",
+  },
+  {
+    title: "Statistic",
+    description: "Raport about your training",
+    icon: <ChartColumnIncreasing className="img-small" />,
+    button_color: "bg-chart-4/90 hover:bg-chart-4",
+  },
+];
+
 const StatusPanel = () => {
   return (
-    <div className="grid md:grid-cols-2 md:h-auto gap-4 grid-cols-1">
+    <div className="grid md:grid-cols-2 grid-cols-1 md:h-auto gap-4">
       {/* MAIN USER GYM */}
 
       {/* STATISTICS */}
@@ -26,7 +55,7 @@ const StatusPanel = () => {
           <p>Overview your statistics</p>
         </div>
         <div className="card_stats">
-          <div className="card-element">
+          <div className="card-element self-start">
             <Dumbbell className="_img" />
             <h3>{DummyUser.exercise_completed || 0}</h3>
             <h2>Exercises Completed</h2>
@@ -54,35 +83,25 @@ const StatusPanel = () => {
           <p>Dym w progress</p>
         </div>
         <div className="quick-action gap-2">
-          <button className="bg-chart-1/90 hover:bg-chart-1 _btn">
-            <Plus className="img-small" />
-            <h2>Add Exercise</h2>
-            <span>Create new exercise</span>
-          </button>
-          <button className="bg-chart-2/90 hover:bg-chart-2 _btn">
-            <UserPlus className="img-small" />
-            <h2>Add Friend</h2>
-            <span>Search & add your friends</span>
-          </button>
-          <button className="bg-chart-3/90 hover:bg-chart-3 _btn">
-            <CalendarCheck className="img-small" />
-            <h2>Schedule</h2>
-            <span>View your calendary</span>
-          </button>
-          <button className="bg-chart-4/90 hover:bg-chart-4 _btn">
-            <ChartColumnIncreasing className="img-small" />
-            <h2>Statistic</h2>
-            <span>Raport about your training</span>
-          </button>
+          {quickactions.map((item, index) => (
+            <button
+              key={index}
+              className={`hover:-translate-y-0.5 transition-all duration-500 _btn click-pressed ${item.button_color}`}
+            >
+              {item.icon}
+              <h2>{item.title}</h2>
+              <span>{item.description}</span>
+            </button>
+          ))}
         </div>
       </div>
-      {/* Quick action panel */}
-      <div className="card">
-        <div className="__header">
-          <h1 className="">Admin</h1>
-          <p className="">Overwie</p>
+      {/* ADMIN PANEL */}
+      {/* ADMIN PANEL SHOW */}
+      {DummyUser.status == "admin" && (
+        <div className="card md:col-span-2">
+          <AdminPanel />
         </div>
-      </div>
+      )}
     </div>
   );
 };

@@ -1,15 +1,12 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Badge from "./ui/Badge";
 import DummyUser from "../storage/Users";
 import StatusPanel from "./ui/MainPage/StatusPanel";
 import AdminPanel from "./AdminPanel";
 import Categories from "./ui/MainPage/Categories";
+import FeaturedExercises from "./ui/MainPage/FeaturedExercises";
 
 const MainPage = () => {
-  useEffect(() => {
-    console.log(DummyUser);
-  }, []);
-
   return (
     <section className="bg-background w-full">
       <div className="section">
@@ -32,16 +29,16 @@ const MainPage = () => {
         <p className="text-lg font-light ml-2 text-muted-foreground">
           Menage exercises and show others your achievements and fitness goals.
         </p>
-        {/* ADMIN PANEL SHOW */}
-        {DummyUser.status === "admin" && <AdminPanel />}
       </div>
       <div className="section">
         <StatusPanel />
       </div>
       <div className="section">
-        <h1>Exercise Categories</h1>
-        <p>Wszystko si</p>
         <Categories />
+      </div>
+      <div className="section">
+        {/* 2. CREATE COMPONENT "Featured Exercises" - GIVE *RANDOM* 4 exercises  and add  BUTTON "View ALL" EXERCISE and LIST OF ALLEXERCISE (https://api.api-ninjas.com/v1/allexercises) WITH FILTER ON MUSCLE GROUPS AND DIFFICULTY */}
+        <FeaturedExercises />
       </div>
     </section>
   );
