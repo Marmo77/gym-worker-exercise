@@ -3,6 +3,7 @@ import DummyUser from "../storage/Users";
 import UserProfileCard from "./ui/UserPage/UserProfileCard";
 import EditProfil from "./ui/UserPage/EditProfil";
 import UserStatistics from "./ui/UserPage/UserStatistics";
+import AddTrainingPlan from "./ui/UserPage/AddTrainingPlan";
 
 const UserPanel = () => {
   const [editOpen, setEditOpen] = useState(false);
@@ -31,6 +32,7 @@ const UserPanel = () => {
           onEdit={() => setEditOpen(!editOpen)}
         />
         <UserStatistics />
+        <AddTrainingPlan />
       </section>
       <EditProfil open={editOpen} onOpenChange={setEditOpen} />
     </>
