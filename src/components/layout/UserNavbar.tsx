@@ -7,9 +7,9 @@ function UserNavbar() {
     <header className="bg-background shadow-lg backdrop-blur">
       <div className="max-w-7xl mx-auto px-6 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          <div className="flex gap-6">
+          <div className="flex items-center gap-6">
             <a href="/">
-              <div className="flex items-center gap-3 relative text-muted-foreground">
+              <div className="flex gap-3 relative text-muted-foreground items-center">
                 <MoveLeft className="img-small text-muted-foreground" />
                 <span className="text-sm">Back to Dashboard</span>
               </div>
