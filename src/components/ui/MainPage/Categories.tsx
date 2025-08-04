@@ -1,49 +1,8 @@
 import React from "react";
 import { useEffect, useState } from "react";
-const API_KEY = import.meta.env.VITE_EXERCISE_API_KEY;
 import { Dumbbell, Heart, Timer, Activity } from "lucide-react";
 
-interface Exercise {
-  name: string;
-  type: string;
-  muscle: string;
-  equipment: string;
-  difficulty: string;
-  instructions: string;
-}
 const Categories = () => {
-  const [exercises, setExercises] = useState<Exercise[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-  useEffect(() => {
-    async function fetchExercises() {
-      try {
-        const res = await fetch(
-          "https://api.api-ninjas.com/v1/exercises?muscle=biceps",
-          {
-            headers: {
-              "X-Api-Key": API_KEY,
-            },
-          }
-        );
-
-        if (!res.ok) {
-          const errorText = await res.text();
-          throw new Error(`API error: ${res.status} - ${errorText}`);
-        }
-
-        const data: Exercise[] = await res.json();
-        setExercises(data);
-      } catch (e: any) {
-        setError(e.message || "Unknown error");
-      } finally {
-        setLoading(false);
-      }
-    }
-
-    fetchExercises();
-  }, []);
-
   // Define categories separately to avoid redeclaration and syntax errors
   const categories = [
     {

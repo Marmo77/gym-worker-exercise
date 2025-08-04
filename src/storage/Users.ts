@@ -10,9 +10,13 @@ export interface UserInfo {
   email: string;
   exercise_completed: number;
   localization: string;
+  goals: string[];
   friends: string[];
+  total_workouts: number;
   days_on_app: number;
   data_of_join?: Date | string;
+  current_streak: number;
+  best_streak: number;
 }
 export interface UserInfoBadge {
   username: User["username"];
@@ -43,10 +47,20 @@ const DummyUser = createUser({
   status: "admin",
   email: "johndeer@gmail.com",
   exercise_completed: 95,
+  total_workouts: 21,
+  goals: [
+    "First workout",
+    "Muscle Memory",
+    "Complete 20 workouts",
+    "Stay shaped",
+    "Add your Friend",
+  ],
   friends: ["john_tomato22", "petrchecz", "mariusz_pudzianator"],
   days_on_app: 30,
   data_of_join: "2009-08-23",
   localization: "Poland",
+  current_streak: 5,
+  best_streak: 12,
 });
 
 export default DummyUser;
