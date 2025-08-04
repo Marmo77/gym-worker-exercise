@@ -79,7 +79,7 @@ const UserStatistics = () => {
         {Stats.map((item, index) => (
           <div
             key={item.id}
-            className={`rounded-2xl shadow-2xl px-12 py-4 flex flex-col gap-2 items-center shadow-xl/40 transition-transform duration-200 hover:-translate-y-2
+            className={`rounded-2xl shadow-2xl px-10 py-4 flex flex-col gap-2 items-center shadow-xl/40 transition-transform duration-200 hover:-translate-y-2
               ${
                 index % 2 !== 0 ? "-translate-y-1.5 hover:-translate-y-2.5" : ""
               }`}
@@ -93,7 +93,7 @@ const UserStatistics = () => {
             </div>
             <h1 className="font-bold text-center text-lg">{item.value}</h1>
             <h2
-              className={`text-sm ${
+              className={`text-xs ${
                 colorClasses[item.color]
               } text-center font-montserrat`}
             >

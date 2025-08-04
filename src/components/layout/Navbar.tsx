@@ -18,7 +18,7 @@ function Navbar() {
   // Function to handle search input changes
 
   return (
-    <header className="bg-background shadow-lg backdrop-blur">
+    <header className="bg-background/10 sticky top-0 z-50 shadow-lg backdrop-blur">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <a className="flex items-center gap-3" href="/">
@@ -29,8 +29,9 @@ function Navbar() {
             {/* SEARCHBAR */}
             <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
             <div className="flex gap-3 items-center">
+              {/* NOTIFICATION */}
               <button
-                className="px-2 py-1.5 rounded-lg text-accent-foreground shadow-md hover:bg-accent hover:scale-105 group transition-transform duration-300 relative click-pressed"
+                className="px-2 py-1.5 rounded-lg bg-background text-accent-foreground shadow-md hover:bg-accent hover:scale-105 group transition-transform duration-300 relative click-pressed"
                 onClick={() => setNotification(false)}
               >
                 {Notification && (
@@ -38,7 +39,8 @@ function Navbar() {
                 )}
                 <Bell className="img-small group-hover:scale-105 group-hover:rotate-3 text-accent-foreground" />
               </button>
-              <button className="px-2 py-1.5 rounded-lg text-accent-foreground shadow-md hover:bg-accent group transition-colors duration-300 click-pressed">
+              {/* SETTINGS */}
+              <button className="px-2 bg-background py-1.5 rounded-lg text-accent-foreground shadow-md hover:bg-accent group transition-colors duration-300 click-pressed">
                 <Settings
                   className="img-small
                 group-hover:scale-105 group-hover:rotate-3 text-accent-foreground"
