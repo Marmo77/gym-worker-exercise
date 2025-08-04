@@ -30,21 +30,21 @@ const UserProfileCard: React.FC<UserProfileCardProps> = ({
   onEdit,
 }) => {
   return (
-    <section className="w-7xl mx-auto section">
-      <div className="w-full rounded-2xl pb-10 profile-card">
+    <section className="w-full max-w-7xl px-4 sm:px-6 lg:px-8 mx-auto">
+      <div className="w-full mt-12 rounded-2xl pb-10 profile-card">
         {/* Gradient Header */}
         <div
-          className="w-full rounded-t-2xl h-24 bg-gradient-to-r from-chart-1 to-admin"
+          className="hidden md:flex w-full rounded-t-2xl h-24 bg-gradient-to-r from-chart-1 to-admin"
           style={{ clipPath: "ellipse(150% 100% at 50% 0%)" }}
         />
-        <div className="flex w-full -mt-14">
-          <div className="z-50 flex gap-3 ml-15">
+        <div className="flex md:justify-start justify-center w-full mt-10 md:-mt-14">
+          <div className="z-50 flex md:flex-row flex-col md:items-start items-center gap-3 md:ml-15">
             <img
               src={avatarUrl}
               alt={`${name} pfp`}
-              className="w-24 h-24 border-3 border-accent shadow-lg bg-accent rounded-full"
+              className="w-24 h-24 border-4 border-accent shadow-lg bg-accent rounded-full object-cover"
             />
-            <div className="flex flex-col gap-1">
+            <div className="flex flex-col md:items-start items-center gap-1">
               <h2
                 className={`text-2xl flex gap-2 items-center font-poppins font-bold ${
                   status === "admin"
@@ -55,10 +55,13 @@ const UserProfileCard: React.FC<UserProfileCardProps> = ({
                 }`}
               >
                 {name}{" "}
-                <span className="text-muted font-dmsans font-light text-xs">
+                <span className="text-muted hidden md:block font-dmsans font-light text-xs">
                   @{username}
                 </span>
               </h2>
+              <span className="text-accent-foreground  md:hidden block font-dmsans font-semibold text-xs">
+                @{username}
+              </span>
               <p
                 className={`capitalize  ml-2 ${
                   status === "admin"
@@ -70,7 +73,7 @@ const UserProfileCard: React.FC<UserProfileCardProps> = ({
               >
                 {status}
               </p>
-              <div className="flex py-1 px-4 gap-6">
+              <div className="flex md:flex-row sm:flex-row flex-col max-sm:items-center py-1 px-4 gap-6">
                 {email && (
                   <a
                     className="text-muted-foreground flex gap-1 items-center click-pressed"

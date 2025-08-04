@@ -16,7 +16,7 @@ const UserPanel = () => {
 
   return (
     <>
-      <section className="mx-auto flex flex-col gap-3">
+      <section className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-6">
         <UserProfileCard
           username={DummyUser.username}
           name={DummyUser.name}

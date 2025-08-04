@@ -77,14 +77,16 @@ const EditProfil = ({
 
   return (
     <Dialog open={open} onOpenChange={handleClose}>
-      <DialogContent className="sm:max-w-[550px]">
+      <DialogContent className="sm:max-w-[550px] max-sm:max-w-[360px]">
         <DialogHeader>
           <DialogTitle>Edit profile</DialogTitle>
           <DialogDescription>
             Make changes to your profile here. Click save when you're done.
           </DialogDescription>
           <div className="grid gap-2">
-            <Label htmlFor="username-1">Name</Label>
+            <Label className="max-sm:mx-auto" htmlFor="name-1">
+              Name
+            </Label>
             <Input
               id="name-1"
               name="name"
@@ -93,7 +95,9 @@ const EditProfil = ({
               onChange={handleNameChange}
             />
             <div className="grid gap-3">
-              <Label htmlFor="username-1">Username</Label>
+              <Label className="max-sm:mx-auto" htmlFor="username-1">
+                Username
+              </Label>
               <Input
                 id="username-1"
                 name="username"
@@ -106,7 +110,9 @@ const EditProfil = ({
               </span>
             </div>
             <div className="grid gap-3">
-              <Label htmlFor="username-1">Email</Label>
+              <Label className="max-sm:mx-auto" htmlFor="username-1">
+                Email
+              </Label>
               <Input
                 id="email-1"
                 type="email"
@@ -121,12 +127,14 @@ const EditProfil = ({
                 Your email is not valid.
               </span>
             )}
-            <div className="grid gap-3">
-              <Label htmlFor="username-1">Country</Label>
+            <div className="grid max-sm:justify-center max-sm:mt-3 max-sm:gap-4 gap-3">
+              <Label className="max-sm:mx-auto" htmlFor="username-1">
+                Country
+              </Label>
               <ChangeCountry country={country} onChange={handleCountryChange} />
             </div>
           </div>
-          <DialogFooter>
+          <DialogFooter className="max-sm:gap-3 max-sm:mt-2">
             <Button type="submit" onClick={handleSave}>
               Save changes
             </Button>

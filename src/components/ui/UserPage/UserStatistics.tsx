@@ -74,8 +74,8 @@ const Stats: Statistics[] = [
 
 const UserStatistics = () => {
   return (
-    <div className="max-w-6xl px-4 mx-auto py-5 w-full">
-      <div className="grid md:grid-cols-6 grid-cols-2 sm:grid-cols-3 gap-6 sm:space-y-4">
+    <div className="max-w-7xl px-4 sm:px-6 lg:px-8 mx-auto">
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4 sm:gap-6">
         {Stats.map((item, index) => (
           <div
             key={item.id}
@@ -85,7 +85,7 @@ const UserStatistics = () => {
               }`}
           >
             <div
-              className={`mx-auto rounded-full bg-gradient-to-br ${
+              className={` rounded-full bg-gradient-to-br ${
                 colorClasses[item.color]
               } w-16 h-16 flex items-center justify-center mb-2`}
             >
