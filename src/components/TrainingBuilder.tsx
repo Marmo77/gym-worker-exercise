@@ -1,7 +1,7 @@
 import React from "react";
 
-const TrainingPlan = () => {
+const TrainingBuilder = () => {
   return <div>Create Training Plan</div>;
 };
 
-export default TrainingPlan;
+export default TrainingBuilder;
