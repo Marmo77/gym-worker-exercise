@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { Routes, BrowserRouter, Route } from "react-router";
-import Layout from "./components/layout/Layout";
-import UserProfileLayout from "./components/layout/UserProfileLayout";
 import MainPage from "./components/MainPage";
 import UserPanel from "./components/UserPanel";
+import TrainingBuilder from "./components/TrainingBuilder";
+import UserLayout from "./components/layout/UserLayout";
+import MainLayout from "./components/layout/MainLayout";
 
 function App() {
   return (
@@ -11,17 +12,14 @@ function App() {
       <BrowserRouter>
         {/* Poprzednia strona grudzien 2013r. www.autoscan.pl */}
         <Routes>
-          <Route path="/" element={<Layout />}>
+          <Route path="/" element={<MainLayout />}>
             <Route index element={<MainPage />} />
           </Route>
-          <Route path="/user" element={<UserProfileLayout />}>
+          <Route path="/user" element={<UserLayout />}>
             <Route index element={<UserPanel />} />
+            <Route path="training" element={<TrainingBuilder />} />{" "}
+            {/* NOWY ROUT */}
           </Route>
-          {/*<Route path="serwis" element={<ServicePage />} />
-            <Route path="sprzedaz-samochodow" element={<CarSellingPage />} />
-            <Route path="chip-tuning-vtech" element={<ChipTuningPage />} />
-            <Route path="pomoc-drogowa" element={<ChipTuningPage />} /> */}
-          {/* <Route path="kontakt" element={<ContactPage />} />  */}
         </Routes>
       </BrowserRouter>
     </>

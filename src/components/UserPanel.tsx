@@ -4,8 +4,11 @@ import UserProfileCard from "./ui/UserPage/UserProfileCard";
 import EditProfil from "./ui/UserPage/EditProfil";
 import UserStatistics from "./ui/UserPage/UserStatistics";
 import AddTrainingPlan from "./ui/UserPage/AddTrainingPlan";
+import { useNavigate } from "react-router-dom";
 
 const UserPanel = () => {
+  const navigate = useNavigate();
+
   const [editOpen, setEditOpen] = useState(false);
 
   // Prepare stats array
@@ -32,7 +35,7 @@ const UserPanel = () => {
           onEdit={() => setEditOpen(!editOpen)}
         />
         <UserStatistics />
-        <AddTrainingPlan />
+        <AddTrainingPlan navigate={navigate} />
       </section>
       <EditProfil open={editOpen} onOpenChange={setEditOpen} />
     </>

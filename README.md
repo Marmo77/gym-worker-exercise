@@ -30,7 +30,8 @@ And track progress of your friends too! 🪩🥳
   ...
   )
 - # Now we are adding new features such as:
-    - functional user training plan when user can add exercises to a plan and select that he already make this exercise and set how many series he did and how much weight/time and stop training after stoping training. The statistic of this are *inserted* to a database *fn fakedatabase*, and modifited to increase user stats.
+    # - Component -> Exercise Training Plan
+    - functional /user/training plan when user can add exercises to a plan and select that he already make this exercise and set how many series he did and how much weight/time and stop training after stoping training. The statistic of this are *inserted* to a database *fn fakedatabase*, and modifited to increase user stats.
     - Add some things to User Panel
     - Adding/Deleting exercises to user Training plan.
     - buttons to featrueExercises to add to user training plan
@@ -38,6 +39,7 @@ And track progress of your friends too! 🪩🥳
     - Create more users and possiblity to find users and add to friends.
 
 
+=======
 ### 📸 Screenshots
 ![snippet_img1](./public/snippets/snippet1.jpg)
 ![snippet_img2](public/snippets/snippet2.jpg)

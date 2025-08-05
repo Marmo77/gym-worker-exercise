@@ -1,10 +1,16 @@
 import { BarChart3, Dumbbell, Play, Plus } from "lucide-react";
+import type { NavigateFunction } from "react-router-dom";
 
-const AddTrainingPlan = () => {
+interface AddTrainingPlanProps {
+  navigate: NavigateFunction;
+}
+
+const AddTrainingPlan = ({ navigate }: AddTrainingPlanProps) => {
   return (
     <section
       className="bg-gradient-to-br from-blue-500 via-purple-600 to-indigo-700 border-0 shadow-2xl cursor-pointer transition-all duration-300 hover:shadow-3xl rounded-4xl max-w-5xl w-6xl px-12 mx-auto hover:scale-105 hover:-translate-y-4 mt-6"
       // onClick={navigateToTrainingPlan}
+      onClick={() => navigate("training")}
     >
       <div className="relative z-10 text-center py-8 space-y-4">
         <div className="flex items-center justify-center">
@@ -35,13 +41,11 @@ const AddTrainingPlan = () => {
         </div>
 
         <div className="mt-6 flex justify-center">
-          <a href="user/training-plan">
-            <button className="bg-white text-blue-600 hover:bg-white/90 font-bold px-8 py-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 border-0 flex justify-center items-center gap-3 hover:-translate-y-1.5 click-pressed">
-              <Dumbbell className="h-5 w-5 mr-2" />
-              Open Training Plan
-              <div className="ml-2">→</div>
-            </button>
-          </a>
+          <button className="bg-white text-blue-600 hover:bg-white/90 font-bold px-8 py-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 border-0 flex justify-center items-center gap-3 hover:-translate-y-1.5 click-pressed">
+            <Dumbbell className="h-5 w-5 mr-2" />
+            Open Training Plan
+            <div className="ml-2">→</div>
+          </button>
         </div>
       </div>
     </section>

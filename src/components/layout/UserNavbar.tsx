@@ -1,17 +1,36 @@
-import React, { useState } from "react";
-import { Share2, Settings, MoveLeft } from "lucide-react";
+import React, { useState, type ReactNode } from "react";
+import { Share2, Settings, MoveLeft, Move, X } from "lucide-react";
 import DummyUser from "../../storage/Users";
+import { useLocation } from "react-router-dom";
 
-function UserNavbar() {
+const iconMap = {
+  arrow: <MoveLeft className="img-small text-muted-foreground" />,
+  close: <X className="img-small text-muted-foreground" />,
+};
+
+interface UserNavbarIconProps {
+  iconType: "arrow" | "close";
+  BackTo: string;
+  LocalisationBack: string;
+}
+function UserNavbar({
+  iconType,
+  BackTo,
+  LocalisationBack,
+}: UserNavbarIconProps) {
+  const icon = iconMap[iconType];
+
+  const phnm = useLocation().pathname;
+
   return (
     <header className="bg-background/10 sticky top-0 z-50 shadow-lg backdrop-blur">
       <div className="max-w-7xl mx-auto px-6 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center gap-6">
-            <a href="/">
+            <a href={BackTo}>
               <div className="flex gap-3 relative text-muted-foreground items-center">
-                <MoveLeft className="img-small text-muted-foreground" />
-                <span className="text-sm">Back to Dashboard</span>
+                {icon}
+                <span className="text-sm">Back to {LocalisationBack}</span>
               </div>
             </a>
             {/* DASH LINE */}
@@ -28,9 +47,13 @@ function UserNavbar() {
                     : "text-accent-foreground"
                 }
               >
-                {DummyUser.name}
+                {phnm === "/user"
+                  ? `${DummyUser.name}`
+                  : phnm === "/user/training"
+                  ? "Training Plan"
+                  : "Unknown"}
               </span>
-              Profil
+              {phnm === "/user" ? "Profile" : " "}
             </div>
           </div>
           <div className="flex items-center gap-4">
