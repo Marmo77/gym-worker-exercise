@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Card,
   CardAction,
@@ -8,6 +8,19 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import { Plus } from "lucide-react";
 
 interface ExerciseProps {
   ExerciseNumber: number;
@@ -23,7 +36,7 @@ interface ExercisesProps {
   weight?: number;
 }
 
-const Exercises: ExercisesProps[] = [
+const initialExercises: ExercisesProps[] = [
   {
     id: 0,
     name: "Pull-ups",
@@ -58,15 +71,188 @@ const Exercises: ExercisesProps[] = [
     reps: 15,
   },
 ];
+
 const ExerciseList = ({ ExerciseNumber }: ExerciseProps) => {
+  const [exercises, setExercises] =
+    useState<ExercisesProps[]>(initialExercises);
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [newExercise, setNewExercise] = useState<Omit<ExercisesProps, "id">>({
+    name: "",
+    muscle: "",
+    target: "",
+    sets: 0,
+    reps: 0,
+    weight: undefined,
+  });
+
+  const handleInputChange = (
+    field: keyof Omit<ExercisesProps, "id">,
+    value: string | number | undefined
+  ) => {
+    setNewExercise((prev) => ({
+      ...prev,
+      [field]:
+        field === "sets" || field === "reps"
+          ? Number(value)
+          : field === "weight"
+          ? value === ""
+            ? undefined
+            : Number(value)
+          : value,
+    }));
+  };
+
+  const handleAddExercise = () => {
+    if (
+      newExercise.name &&
+      newExercise.muscle &&
+      newExercise.target &&
+      newExercise.sets > 0 &&
+      newExercise.reps > 0
+    ) {
+      const exerciseToAdd: ExercisesProps = {
+        ...newExercise,
+        id:
+          exercises.length > 0
+            ? Math.max(...exercises.map((e) => e.id)) + 1
+            : 0,
+      };
+
+      setExercises((prev) => [...prev, exerciseToAdd]);
+      setNewExercise({
+        name: "",
+        muscle: "",
+        target: "",
+        sets: 0,
+        reps: 0,
+        weight: undefined,
+      });
+      setIsDialogOpen(false);
+    }
+  };
+
+  const handleCloseDialog = () => {
+    setIsDialogOpen(false);
+    setNewExercise({
+      name: "",
+      muscle: "",
+      target: "",
+      sets: 0,
+      reps: 0,
+      weight: undefined,
+    });
+  };
+
   return (
     <div className="flex flex-wrap flex-col gap-5 max-w-7xl">
-      <h1 className="font-semibold text-2xl text-accent-foreground font-poppins px-4">
-        Number of Exercises: {ExerciseNumber}
-      </h1>
+      <div className="flex justify-between items-center px-4">
+        <h1 className="font-semibold text-2xl text-accent-foreground font-poppins">
+          Number of Exercises: {exercises.length}
+        </h1>
+        <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+          <DialogTrigger asChild>
+            <Button className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white">
+              <Plus className="h-4 w-4 mr-2" />
+              Add Exercise
+            </Button>
+          </DialogTrigger>
+          <DialogContent className="sm:max-w-[425px]">
+            <DialogHeader>
+              <DialogTitle>Add New Exercise</DialogTitle>
+              <DialogDescription>
+                Fill in the details for your new exercise. Click save when
+                you're done.
+              </DialogDescription>
+            </DialogHeader>
+            <div className="grid gap-4 py-4">
+              <div className="grid grid-cols-4 items-center gap-4">
+                <Label htmlFor="name" className="text-right">
+                  Name
+                </Label>
+                <Input
+                  id="name"
+                  value={newExercise.name}
+                  onChange={(e) => handleInputChange("name", e.target.value)}
+                  className="col-span-3"
+                  placeholder="Exercise name"
+                />
+              </div>
+              <div className="grid grid-cols-4 items-center gap-4">
+                <Label htmlFor="muscle" className="text-right">
+                  Muscle
+                </Label>
+                <Input
+                  id="muscle"
+                  value={newExercise.muscle}
+                  onChange={(e) => handleInputChange("muscle", e.target.value)}
+                  className="col-span-3"
+                  placeholder="Target muscle group"
+                />
+              </div>
+              <div className="grid grid-cols-4 items-center gap-4">
+                <Label htmlFor="target" className="text-right">
+                  Target
+                </Label>
+                <Input
+                  id="target"
+                  value={newExercise.target}
+                  onChange={(e) => handleInputChange("target", e.target.value)}
+                  className="col-span-3"
+                  placeholder="Strength, Cardio, etc."
+                />
+              </div>
+              <div className="grid grid-cols-4 items-center gap-4">
+                <Label htmlFor="sets" className="text-right">
+                  Sets
+                </Label>
+                <Input
+                  id="sets"
+                  type="number"
+                  value={newExercise.sets}
+                  onChange={(e) => handleInputChange("sets", e.target.value)}
+                  className="col-span-3"
+                  placeholder="Number of sets"
+                />
+              </div>
+              <div className="grid grid-cols-4 items-center gap-4">
+                <Label htmlFor="reps" className="text-right">
+                  Reps
+                </Label>
+                <Input
+                  id="reps"
+                  type="number"
+                  value={newExercise.reps}
+                  onChange={(e) => handleInputChange("reps", e.target.value)}
+                  className="col-span-3"
+                  placeholder="Number of reps"
+                />
+              </div>
+              <div className="grid grid-cols-4 items-center gap-4">
+                <Label htmlFor="weight" className="text-right">
+                  Weight (kg)
+                </Label>
+                <Input
+                  id="weight"
+                  type="number"
+                  value={newExercise.weight || ""}
+                  onChange={(e) => handleInputChange("weight", e.target.value)}
+                  className="col-span-3"
+                  placeholder="Weight in kg (optional)"
+                />
+              </div>
+            </div>
+            <DialogFooter>
+              <Button variant="outline" onClick={handleCloseDialog}>
+                Cancel
+              </Button>
+              <Button onClick={handleAddExercise}>Add Exercise</Button>
+            </DialogFooter>
+          </DialogContent>
+        </Dialog>
+      </div>
       <div className="space-y-4">
         <div className="space-y-6">
-          {Exercises.map((item) => (
+          {exercises.map((item) => (
             <Card
               className="bg-white/60 backdrop-blur-sm hover:shadow-accent-foreground/20  shadow-xl duration-200 font-poppins"
               key={item.id}
@@ -114,7 +300,14 @@ const ExerciseList = ({ ExerciseNumber }: ExerciseProps) => {
             </Card>
           ))}
         </div>
-        <div>JD</div>
+        <div className="flex justify-center">
+          <button
+            className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 py-2 rounded-full px-2 hover:to-purple-500 transition-colors click-pressed duration-300 hover:scale-105 text-white"
+            onClick={() => setIsDialogOpen(true)}
+          >
+            <Plus className="img-big text-accent-foreground"></Plus>
+          </button>
+        </div>
       </div>
     </div>
   );
