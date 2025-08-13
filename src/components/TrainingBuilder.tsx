@@ -36,12 +36,12 @@ const TrainingBuilder = () => {
             </span>
           </div>
           <div className="flex gap-3">
-            <button className="self-center md:px-4 px-7 py-3 md:py-2 rounded-4xl bg-gradient-to-r from-blue-600 to-purple-600 flex items-center justify-center gap-3 click-pressed hover:scale-105 duration-200">
+            {/* <button className="self-center md:px-4 px-7 py-3 md:py-2 rounded-4xl bg-gradient-to-r from-blue-600 to-purple-600 flex items-center justify-center gap-3 click-pressed hover:scale-105 duration-200">
               <Plus className="img-small" />
               <span className="text-background max-md:text-lg font-poppins">
                 Add Exercise
               </span>
-            </button>
+            </button> */}
             <button
               className="bg-admin px-3 py-3 flex items-center rounded-2xl self-center group hover:scale-105 duration-500 click-pressed"
               onClick={handleDeleteExercises}
