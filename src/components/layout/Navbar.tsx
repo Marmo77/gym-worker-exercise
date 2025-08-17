@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import Badge from "../ui/Badge";
 import Search from "../ui/Search";
-import DummyUser from "../../storage/Users";
-import { Bell, Settings } from "lucide-react";
+import { getUserFromStorage } from "../../storage/Users";
+import { Bell, Settings, LogOut } from "lucide-react";
 interface MenuItems {
   title: string;
   link: string;
@@ -12,9 +12,14 @@ const MenuProps: MenuItems[] = [
   { title: "About", link: "/about" },
 ];
 
-function Navbar() {
+interface NavbarProps {
+  onLogout: () => void;
+}
+
+function Navbar({ onLogout }: NavbarProps) {
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [Notification, setNotification] = useState<boolean>(true);
+  const currentUser = getUserFromStorage();
   // Function to handle search input changes
 
   return (
@@ -49,10 +54,18 @@ function Navbar() {
               {/* USER BADGE */}
               <a href="/user">
                 <Badge
-                  username={DummyUser.username}
-                  status={DummyUser.status ?? "user"}
+                  username={currentUser?.username || "user"}
+                  status={currentUser?.status || "user"}
                 />
               </a>
+              {/* LOGOUT BUTTON */}
+              <button
+                onClick={onLogout}
+                className="px-2 py-1.5 rounded-lg bg-red-50 text-red-600 shadow-md hover:bg-red-100 group transition-colors duration-300 click-pressed"
+                title="Logout"
+              >
+                <LogOut className="img-small group-hover:scale-105 text-red-600" />
+              </button>
             </div>
           </div>
         </div>

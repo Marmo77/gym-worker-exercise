@@ -7,7 +7,7 @@ export interface UserInfo {
   username: User["username"];
   name: string;
   status?: "user" | User["status"];
-  email: string;
+  email: string | "email@gmail.com";
   exercise_completed: number;
   localization: string;
   goals: string[];
@@ -18,49 +18,121 @@ export interface UserInfo {
   current_streak: number;
   best_streak: number;
 }
+
 export interface UserInfoBadge {
   username: User["username"];
   status: User["status"];
 }
 
-function createUser(user: UserInfo): UserInfo {
-  return {
-    status: "user",
-    ...user,
-  };
-}
+// User profiles
+export const USER_PROFILES = {
+  admin: {
+    username: "admin",
+    name: "Super Admin",
+    status: "admin" as const,
+    email: "admin@gymapp.com",
+    exercise_completed: 95,
+    total_workouts: 21,
+    goals: [
+      "Manage Users",
+      "Monitor System",
+      "Update Content",
+      "Analytics Review",
+      "System Maintenance",
+    ],
+    friends: ["john_tomato22", "petrchecz", "mariusz_pudzianator"],
+    days_on_app: 365,
+    data_of_join: "2023-01-01",
+    localization: "Poland",
+    current_streak: 30,
+    best_streak: 45,
+  },
+  user: {
+    username: "user",
+    name: "Regular User",
+    status: "user" as const,
+    email: "user@gymapp.com",
+    exercise_completed: 41,
+    total_workouts: 8,
+    goals: [
+      "First workout",
+      "Muscle Memory",
+      "Complete 20 workouts",
+      "Stay shaped",
+      "Add your Friend",
+    ],
+    friends: ["john_tomato22", "petrchecz"],
+    days_on_app: 30,
+    data_of_join: "2023-05-19",
+    localization: "Germany",
+    current_streak: 5,
+    best_streak: 12,
+  },
+};
+
+// Local storage management
+export const USER_STORAGE_KEY = "currentUser";
+export const USER_STATUS_KEY = "UserStatus";
+
+export const saveUserToStorage = (user: UserInfo) => {
+  localStorage.setItem(USER_STORAGE_KEY, JSON.stringify(user));
+  localStorage.setItem(USER_STATUS_KEY, user.status || "user");
+};
+
+export const getUserFromStorage = (): UserInfo | null => {
+  const userData = localStorage.getItem(USER_STORAGE_KEY);
+  return userData ? JSON.parse(userData) : null;
+};
+
+export const clearUserFromStorage = () => {
+  localStorage.removeItem(USER_STORAGE_KEY);
+  localStorage.removeItem(USER_STATUS_KEY);
+};
+
+export const isUserLoggedIn = (): boolean => {
+  return localStorage.getItem(USER_STORAGE_KEY) !== null;
+};
+
+export const getCurrentUserStatus = (): string | null => {
+  return localStorage.getItem(USER_STATUS_KEY) || null;
+};
+
+// Login function
+export const loginUser = (userType: "admin" | "user"): UserInfo => {
+  const userProfile = USER_PROFILES[userType];
+  saveUserToStorage(userProfile);
+  return userProfile;
+};
+
+// Logout function
+export const logoutUser = () => {
+  clearUserFromStorage();
+};
+
+// function createUser(user: UserInfo): UserInfo {
+//   return {
+//     status: "user",
+//     ...user,
+//   };
 
 // const DummyUser = createUser({
-//   username: "Henry211",
-//   name: "Henryk",
-//   status: "premium",
-//   email: "johny2115@gmail.com",
-//   exercise_completed: 41,
-//   friends: ["john_tomato22", "petrchecz"],
+//   username: "Admin123",
+//   name: "SuperAdmin",
+//   status: "admin",
+//   email: "johndeer@gmail.com",
+//   exercise_completed: 95,
+//   total_workouts: 21,
+//   goals: [
+//     "First workout",
+//     "Muscle Memory",
+//     "Complete 20 workouts",
+//     "Stay shaped",
+//     "Add your Friend",
+//   ],
+//   friends: ["john_tomato22", "petrchecz", "mariusz_pudzianator"],
 //   days_on_app: 30,
-//   data_of_join: "2023-05-19",
-//   localization: "Germany",
+//   data_of_join: "2009-08-23",
+//   localization: "Poland",
+//   current_streak: 5,
+//   best_streak: 12,
 // });
-const DummyUser = createUser({
-  username: "Admin123",
-  name: "SuperAdmin",
-  status: "admin",
-  email: "johndeer@gmail.com",
-  exercise_completed: 95,
-  total_workouts: 21,
-  goals: [
-    "First workout",
-    "Muscle Memory",
-    "Complete 20 workouts",
-    "Stay shaped",
-    "Add your Friend",
-  ],
-  friends: ["john_tomato22", "petrchecz", "mariusz_pudzianator"],
-  days_on_app: 30,
-  data_of_join: "2009-08-23",
-  localization: "Poland",
-  current_streak: 5,
-  best_streak: 12,
-});
-
-export default DummyUser;

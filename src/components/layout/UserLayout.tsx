@@ -2,7 +2,11 @@ import { useLocation } from "react-router-dom";
 import BaseLayout from "./BaseLayout";
 import UserNavbar from "./UserNavbar";
 
-const UserLayout = () => {
+interface UserLayoutProps {
+  onLogout: () => void;
+}
+
+const UserLayout = ({ onLogout }: UserLayoutProps) => {
   const location = useLocation();
 
   const iconType = location.pathname === "/user" ? "arrow" : "close";
@@ -19,6 +23,7 @@ const UserLayout = () => {
           iconType={iconType}
           BackTo={BackToSite}
           LocalisationBack={LocalisationBack}
+          onLogout={onLogout}
         />
       }
     />
