@@ -4,6 +4,7 @@ import {
   getUserFromStorage,
   getCurrentUserStatus,
   isUserLoggedIn,
+  saveUserToStorage,
 } from "../storage/Users";
 import type { UserInfo } from "../storage/Users";
 
@@ -39,11 +40,19 @@ export function UserProvider({ children }: UserProviderProps) {
     }
   }, []);
 
+  // Wrapper function to save to localStorage when user is updated
+  const updateCurrentUser = (user: UserInfo | null) => {
+    setCurrentUser(user);
+    if (user) {
+      saveUserToStorage(user);
+    }
+  };
+
   const value: UserContextType = {
     currentUser,
     userStatus,
     isAuthenticated,
-    setCurrentUser,
+    setCurrentUser: updateCurrentUser,
     setUserStatus,
     setIsAuthenticated,
   };

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -13,6 +13,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
 import { getUserFromStorage } from "@/storage/Users";
+import { useUser } from "../../../contexts/UserContext";
 import { ChangeCountry } from "./ChangeCoutry";
 
 const EditProfil = ({
@@ -22,13 +23,23 @@ const EditProfil = ({
   open: boolean;
   onOpenChange: (open: boolean) => void;
 }) => {
-  const currentUser = getUserFromStorage();
+  const { setCurrentUser, currentUser } = useUser();
   const [name, setName] = useState<string | undefined>(currentUser?.name);
   const [email, setEmail] = useState<string | undefined>(currentUser?.email);
   const [country, setCountry] = useState<string>(
     currentUser?.localization || "Poland"
   );
   const [validEmail, setValidEmail] = useState(true);
+
+  // Update form when dialog opens or currentUser changes
+  useEffect(() => {
+    if (open && currentUser) {
+      setName(currentUser.name);
+      setEmail(currentUser.email);
+      setCountry(currentUser.localization || "Poland");
+      setValidEmail(true);
+    }
+  }, [open, currentUser]);
 
   const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setName(e.target.value); //on every letter change the state of name
@@ -39,8 +50,11 @@ const EditProfil = ({
 
   const handleClose = () => {
     onOpenChange(!open);
-    setName(currentUser?.name); // Cancel the handleName Changes
-    setEmail(currentUser?.email); // Cancel the handelEmail Changes
+    // Reset form to original values
+    setName(currentUser?.name);
+    setEmail(currentUser?.email);
+    setCountry(currentUser?.localization || "Poland");
+    setValidEmail(true);
     console.log("Closed");
   };
 
@@ -64,15 +78,23 @@ const EditProfil = ({
 
   const handleSave = () => {
     if (!ValidateEmail()) {
-    } else {
-      console.log("Name changed to: " + name);
-      console.log("Email changed to: " + email);
-      currentUser!.name = name ?? ""; // Update the name
-      currentUser!.email = email ?? ""; // Update the email
-      currentUser!.localization = country ?? "";
-      onOpenChange(!open);
+      return;
     }
+
+    // Create updated user object
+    const updatedUser = {
+      ...currentUser!,
+      name: name ?? "",
+      email: email ?? "",
+      localization: country ?? "",
+    };
+
+    // Update UserContext (this will update all components immediately)
+    setCurrentUser(updatedUser);
+
+    onOpenChange(!open);
   };
+
   const handleCountryChange = (selectedCountry: string) => {
     setCountry(selectedCountry);
     console.log("Country:", selectedCountry);
@@ -121,7 +143,7 @@ const EditProfil = ({
                 type="email"
                 name="email"
                 className="border-border rounded-xl "
-                defaultValue={`${currentUser?.email}`}
+                value={email ?? ""}
                 onChange={handleEmailChange}
               />
             </div>

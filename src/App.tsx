@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Routes, BrowserRouter, Route } from "react-router";
 import MainPage from "./components/MainPage";
 import UserPanel from "./components/UserPanel";
@@ -7,25 +7,21 @@ import UserLayout from "./components/layout/UserLayout";
 import MainLayout from "./components/layout/MainLayout";
 import LoginPage from "./components/LoginPage";
 import LogoutDialog from "./components/ui/LogoutDialog";
-import { isUserLoggedIn, getCurrentUserStatus, logoutUser } from "./storage/Users";
+import { UserProvider, useUser } from "./contexts/UserContext";
+import { logoutUser, getUserFromStorage } from "./storage/Users";
 
-function App() {
-  const [currentUser, setCurrentUser] = useState<string | null>(null);
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+function AppContent() {
+  const { isAuthenticated, setCurrentUser, setUserStatus, setIsAuthenticated } = useUser();
   const [showLogoutDialog, setShowLogoutDialog] = useState(false);
 
-  useEffect(() => {
-    // Check if user is already logged in on app start
-    const userStatus = getCurrentUserStatus();
-    if (userStatus && isUserLoggedIn()) {
-      setCurrentUser(userStatus);
+  const handleLogin = (userType: "admin" | "user") => {
+    // The loginUser function will handle storage, we just need to update context
+    const user = getUserFromStorage();
+    if (user) {
+      setCurrentUser(user);
+      setUserStatus(userType);
       setIsAuthenticated(true);
     }
-  }, []);
-
-  const handleLogin = (userType: "admin" | "user") => {
-    setCurrentUser(userType);
-    setIsAuthenticated(true);
   };
 
   const handleLogoutClick = () => {
@@ -35,35 +31,44 @@ function App() {
   const handleLogoutConfirm = () => {
     logoutUser();
     setCurrentUser(null);
+    setUserStatus(null);
     setIsAuthenticated(false);
     setShowLogoutDialog(false);
   };
 
   return (
     <>
-      <BrowserRouter>
-        {!isAuthenticated ? (
-          <LoginPage onLogin={handleLogin} />
-        ) : (
-          <Routes>
-            <Route path="/" element={<MainLayout onLogout={handleLogoutClick} />}>
-              <Route index element={<MainPage />} />
-            </Route>
-            <Route path="/user" element={<UserLayout onLogout={handleLogoutClick} />}>
-              <Route index element={<UserPanel />} />
-              <Route path="training" element={<TrainingBuilder />} />
-            </Route>
-          </Routes>
-        )}
-        
-        {/* Logout Dialog */}
-        <LogoutDialog
-          isOpen={showLogoutDialog}
-          onClose={() => setShowLogoutDialog(false)}
-          onConfirm={handleLogoutConfirm}
-        />
-      </BrowserRouter>
+      {!isAuthenticated ? (
+        <LoginPage onLogin={handleLogin} />
+      ) : (
+        <Routes>
+          <Route path="/" element={<MainLayout onLogout={handleLogoutClick} />}>
+            <Route index element={<MainPage />} />
+          </Route>
+          <Route path="/user" element={<UserLayout onLogout={handleLogoutClick} />}>
+            <Route index element={<UserPanel />} />
+            <Route path="training" element={<TrainingBuilder />} />
+          </Route>
+        </Routes>
+      )}
+      
+      {/* Logout Dialog */}
+      <LogoutDialog
+        isOpen={showLogoutDialog}
+        onClose={() => setShowLogoutDialog(false)}
+        onConfirm={handleLogoutConfirm}
+      />
     </>
+  );
+}
+
+function App() {
+  return (
+    <UserProvider>
+      <BrowserRouter>
+        <AppContent />
+      </BrowserRouter>
+    </UserProvider>
   );
 }
 
