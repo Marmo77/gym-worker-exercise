@@ -77,7 +77,7 @@ And track progress of your friends too! 🪩🥳
 
 ------
 ## ❗ INFO  ❗
-- This was my first bigger project, so it is not perfect, before finishing it I already
+- This was my first bigger project with React that use more complicated pages and logics, so it is not perfect, before finishing it I already
 see some things i could do better (start with building website based on database, not connecting it on last moment,
 using shadcn components, not mixing it with my custom components, etc.)
 - I am not a professional, so I am still learning, and I am open to any kind and feedback🥰.
