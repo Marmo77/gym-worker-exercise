@@ -33,11 +33,11 @@ And track progress of your friends too! 🪩🥳
 - don't used motion.div, becouse... i am lazy ass,especially with this project.
 
 # Features to "finish" the project:
-    - Share Profile button -> copy link to github repository.
-    - Change User Profile Pictures (Admin, User)
-    - on /user menu with buttons showing (achievements, friends, Workouts Exercise History)
+    ✅ - Share Profile button -> copy link to github repository. 
+    ✅ - Change User Profile Pictures (Admin, User)
     - add "Admin" an Admin panel with options to add users, delete users, edit users, etc.
     - Make Quick Actions, actually working
+    - on /user menu with buttons showing (achievements, friends, Workouts Exercise History)
     - "Add a Friend" system, where you can send friend request to users.
     - Make for User schedule with days that you have already trained. 
     - Create Footer with links to social media, and GitHub repository.

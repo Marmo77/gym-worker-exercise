@@ -34,7 +34,6 @@ const UserProfileCard: React.FC<UserProfileCardProps> = ({
   return (
     <section className="w-full max-w-7xl px-4 sm:px-6 lg:px-8 mx-auto">
       <div className="w-full mt-12 rounded-2xl pb-10 profile-card relative">
-        {/* LOGOUT */}
         {/* Gradient Header */}
         <div
           className="hidden md:flex w-full rounded-t-2xl h-24 bg-gradient-to-r from-chart-1 to-admin"

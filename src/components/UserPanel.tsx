@@ -36,7 +36,11 @@ const UserPanel = () => {
           username={currentUser?.username}
           name={currentUser?.name}
           status={currentUser?.status ?? "user"}
-          avatarUrl="/imgs/dummy1.jpg"
+          avatarUrl={
+            currentUser?.status == "admin"
+              ? "./imgs/admin.jpg"
+              : "./imgs/user.jpg"
+          }
           email={currentUser?.email}
           localization={currentUser?.localization}
           data_of_join={currentUser?.data_of_join}

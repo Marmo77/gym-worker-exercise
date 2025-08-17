@@ -11,7 +11,7 @@ import {
   ChartColumnIncreasing,
   Target,
 } from "lucide-react";
-import { getUserFromStorage } from "../../../storage/Users";
+import { AdminList, getUserFromStorage } from "../../../storage/Users";
 import AdminPanel from "@/components/AdminPanel";
 const quickactions = [
   {
@@ -98,11 +98,12 @@ const StatusPanel = () => {
       </div>
       {/* ADMIN PANEL */}
       {/* ADMIN PANEL SHOW */}
-      {currentuser?.status == "admin" && (
-        <div className="card md:col-span-2">
-          <AdminPanel />
-        </div>
-      )}
+      {AdminList.includes(currentuser?.username ?? "") &&
+        currentuser?.status == "admin" && (
+          <div className="card md:col-span-2">
+            <AdminPanel />
+          </div>
+        )}
     </div>
   );
 };
