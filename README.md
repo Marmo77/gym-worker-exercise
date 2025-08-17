@@ -39,6 +39,7 @@ And track progress of your friends too! 🪩🥳
     - "Add a Friend" system, where you can send friend request to users.
     - Make for User schedule with days that you have already trained. 
     - Create Footer with links to social media, and GitHub repository.
+    .
 
 # - The plan to end this project is 1:30 am 18.08.2025
 
