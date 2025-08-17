@@ -5,38 +5,50 @@ Help gym workers and fitness enthusiasts plan, track, and manage their exercises
 And track progress of your friends too! 🪩🥳
 ---
 
+
 ### 🚀 MVP (Minimum Viable Product)
 - Basic exercise logging and tracking 📒
 - Adding Exercises and Track the schedule of it 📶
 - User Profil with possiblity of editing it 🖊️
 - Simple, user-friendly interface 😃
-- Persistent storage for exercise data 💾
-- Responsive whole app 🛜
+- User panel with statistics
+- Responsive website app 🛜
 ---
 
 ### ✨ Features
-- 📂 Database with real users profiles
-- 📝 Create and manage custom exercise routines
+- 📂 local Database profiles
+- 📝 Checking the schedule of the user
+- 💌 Sending Friends requests
 - 📊 Track progress over time
 - 🏃 Add multiple types of exercises
 - ⏱️ Schedule workouts (if supported in app)
 
 ---
 
-### State for: 02.08.2025: 💻
-- !*Now there is not any database, I work on DummyUser data* (
- const DummyUser = createUser({
-  username: "Admin123",
-  ...
-  )
-- # Now we are adding new features such as:
-    # - Component -> Exercise Training Plan
-    - functional /user/training plan when user can add exercises to a plan and select that he already make this exercise and set how many series he did and how much weight/time and stop training after stoping training. The statistic of this are *inserted* to a database *fn fakedatabase*, and modifited to increase user stats.
-    - Add some things to User Panel
-    - Adding/Deleting exercises to user Training plan.
-    - buttons to featrueExercises to add to user training plan
-    - Create whole login/signin page with functionalities.
-    - Create more users and possiblity to find users and add to friends.
+### State for: 17.08.2025: 💻
+- Replaced the DummyUser into a database with 2 users(admin | user),
+- Added simple loging page with already prepered options.
+- Simple Local Database on LocalStorage.
+- Got API error with Featured Exercises, so I am considering to (create OWN mini database with 10 exercises to get randomized).
+
+# Features to "finish" the project:
+    - Share Profile button -> copy link to github repository.
+    - on /user menu with buttons showing (achievements, friends, Workouts Exercise History)
+    - add "Admin" an Admin panel with options to add users, delete users, edit users, etc.
+    - Make Quick Actions, actually working
+    - "Add a Friend" system, where you can send friend request to users.
+    - Make for User schedule with days that you have already trained. 
+    - Create Footer with links to social media, and GitHub repository.
+
+# - The plan to end this project is 1:30 am 18.08.2025
+
+----------------------
+
+# after finishing this project I will start new one that will be build full on shadcn components, and other supporting libraries, will have: login/signin, real database, and will be fully responsive. 
+*https://tailark.com/, https://vite.dev/,  https://tailwindcss.com/docs/installation/using-vite, https://ui.shadcn.com/docs/components*
+
+----------------
+
 
 
 =======
@@ -62,6 +74,15 @@ And track progress of your friends too! 🪩🥳
 - If you are interested into collaboration on any of
   smth of this kind, contact me. 🤝
 ---
+
+------
+## ❗ INFO  ❗
+- This was my first bigger project with React that use more complicated pages and logics, so it is not perfect, before finishing it I already
+see some things i could do better (start with building website based on database, not connecting it on last moment,
+using shadcn components, not mixing it with my custom components, etc.)
+- I am not a professional, so I am still learning, and I am open to any kind and feedback🥰.
+------
+
 
 ## 🧑‍💻 Installation
 
