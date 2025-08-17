@@ -8,8 +8,9 @@ import {
   Flame,
   Clock,
 } from "lucide-react";
-import DummyUser from "@/storage/Users";
-
+// import currentUser? from "@/storage/Users";
+import { getUserFromStorage } from "@/storage/Users";
+const currentUser = getUserFromStorage();
 interface Statistics {
   id: number;
   title: string;
@@ -32,42 +33,42 @@ const Stats: Statistics[] = [
     id: 1,
     title: "Total Workouts",
     icon: <Trophy className="img-big" />,
-    value: DummyUser.total_workouts,
+    value: currentUser?.total_workouts || 0,
     color: "blue",
   },
   {
     id: 2,
     title: "Avg Duration",
     icon: <Clock className="img-big" />,
-    value: DummyUser.exercise_completed,
+    value: currentUser?.exercise_completed || 0,
     color: "purple",
   },
   {
     id: 3,
     title: "Exercises Completed",
     icon: <Target className="img-big" />,
-    value: DummyUser.exercise_completed,
+    value: currentUser?.exercise_completed || 0,
     color: "green",
   },
   {
     id: 4,
     title: "Current Streak",
     icon: <Flame className="img-big" />,
-    value: DummyUser.current_streak,
+    value: currentUser?.current_streak || 0,
     color: "red",
   },
   {
     id: 5,
     title: "Best Streak",
     icon: <TrendingUp className="img-big" />,
-    value: DummyUser.best_streak,
+    value: currentUser?.best_streak || 0,
     color: "blue2",
   },
   {
     id: 6,
     title: "Goals Achieved",
     icon: <Goal className="img-big" />,
-    value: DummyUser.goals.length,
+    value: currentUser?.goals.length || 0,
     color: "orange",
   },
 ];

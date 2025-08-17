@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
 import Badge from "./ui/Badge";
-import DummyUser from "../storage/Users";
+import { getUserFromStorage } from "../storage/Users";
 import StatusPanel from "./ui/MainPage/StatusPanel";
 import AdminPanel from "./AdminPanel";
 import Categories from "./ui/MainPage/Categories";
 import FeaturedExercises from "./ui/MainPage/FeaturedExercises";
 
 const MainPage = () => {
+  const currentUser = getUserFromStorage();
+
   return (
     <section className="bg-background w-full">
       <div className="section">
@@ -15,14 +17,14 @@ const MainPage = () => {
           Welcome back{" "}
           <span
             className={`font-black ${
-              DummyUser.status == "admin"
+              currentUser?.status == "admin"
                 ? "text-admin"
-                : DummyUser.status == "premium"
+                : currentUser?.status == "premium"
                 ? "text-premium"
                 : "text-text"
             }`}
           >
-            {DummyUser.username}
+            {currentUser?.username || "User"}
           </span>
           !
         </h1>

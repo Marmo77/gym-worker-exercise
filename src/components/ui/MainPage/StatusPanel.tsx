@@ -11,7 +11,7 @@ import {
   ChartColumnIncreasing,
   Target,
 } from "lucide-react";
-import DummyUser from "../../../storage/Users";
+import { getUserFromStorage } from "../../../storage/Users";
 import AdminPanel from "@/components/AdminPanel";
 const quickactions = [
   {
@@ -41,6 +41,7 @@ const quickactions = [
 ];
 
 const StatusPanel = () => {
+  const currentuser = getUserFromStorage();
   return (
     <div className="grid md:grid-cols-2 grid-cols-1 md:h-auto gap-4">
       {/* MAIN USER GYM */}
@@ -57,18 +58,18 @@ const StatusPanel = () => {
         <div className="card_stats">
           <div className="card-element self-start">
             <Dumbbell className="_img" />
-            <h3>{DummyUser.exercise_completed || 0}</h3>
+            <h3>{currentuser?.exercise_completed || 0}</h3>
             <h2>Exercises Completed</h2>
             <span>(This month)</span>
           </div>
           <div className="card-element self-start">
             <Users className="_img" />
-            <h3>{DummyUser.friends?.length || 0}</h3>
+            <h3>{currentuser?.friends?.length || 0}</h3>
             <h2>Your friends</h2>
           </div>
           <div className="card-element self-start">
             <Calendar className="_img" />
-            <h3 className="">{DummyUser.days_on_app || 0}</h3>
+            <h3 className="">{currentuser?.days_on_app || 0}</h3>
             <h2>Days on app</h2>
           </div>
         </div>
@@ -97,7 +98,7 @@ const StatusPanel = () => {
       </div>
       {/* ADMIN PANEL */}
       {/* ADMIN PANEL SHOW */}
-      {DummyUser.status == "admin" && (
+      {currentuser?.status == "admin" && (
         <div className="card md:col-span-2">
           <AdminPanel />
         </div>

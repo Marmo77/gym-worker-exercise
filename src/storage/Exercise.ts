@@ -1,5 +1,11 @@
 // import fetch from "node-fetch";
 
+// EXERCISES OF USER
+
+// interface ExerciseInterface {
+
+// }
+
 // const API_KEY = "cEbgcZlfhl6NiwXZS1AlSw==4ZMYtbkvwhWvtzj5";
 // const muscle = "biceps";
 // const apiUrl = `https://api.api-ninjas.com/v1/exercises?muscle=${muscle}`;

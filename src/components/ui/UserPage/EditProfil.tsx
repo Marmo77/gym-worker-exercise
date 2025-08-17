@@ -12,7 +12,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
-import DummyUser from "@/storage/Users";
+import { getUserFromStorage } from "@/storage/Users";
 import { ChangeCountry } from "./ChangeCoutry";
 
 const EditProfil = ({
@@ -22,9 +22,12 @@ const EditProfil = ({
   open: boolean;
   onOpenChange: (open: boolean) => void;
 }) => {
-  const [name, setName] = useState(DummyUser.name);
-  const [email, setEmail] = useState<string>(DummyUser.email);
-  const [country, setCountry] = useState<string>(DummyUser.localization);
+  const currentUser = getUserFromStorage();
+  const [name, setName] = useState<string | undefined>(currentUser?.name);
+  const [email, setEmail] = useState<string | undefined>(currentUser?.email);
+  const [country, setCountry] = useState<string>(
+    currentUser?.localization || "Poland"
+  );
   const [validEmail, setValidEmail] = useState(true);
 
   const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -36,13 +39,13 @@ const EditProfil = ({
 
   const handleClose = () => {
     onOpenChange(!open);
-    setName(DummyUser.name); // Cancel the handleName Changes
-    setEmail(DummyUser.email); // Cancel the handelEmail Changes
+    setName(currentUser?.name); // Cancel the handleName Changes
+    setEmail(currentUser?.email); // Cancel the handelEmail Changes
     console.log("Closed");
   };
 
   const ValidateEmail = () => {
-    if (email.includes("@")) {
+    if (email?.includes("@")) {
       if (email.slice(email.search("@"), email.length).includes(".")) {
         setValidEmail(true);
         console.log("EMAIL jest: ", validEmail);
@@ -64,9 +67,9 @@ const EditProfil = ({
     } else {
       console.log("Name changed to: " + name);
       console.log("Email changed to: " + email);
-      DummyUser.name = name; // Update the name
-      DummyUser.email = email; // Update the email
-      DummyUser.localization = country;
+      currentUser!.name = name ?? ""; // Update the name
+      currentUser!.email = email ?? ""; // Update the email
+      currentUser!.localization = country ?? "";
       onOpenChange(!open);
     }
   };
@@ -91,7 +94,7 @@ const EditProfil = ({
               id="name-1"
               name="name"
               className="border-border rounded-xl "
-              value={name}
+              value={name ?? ""}
               onChange={handleNameChange}
             />
             <div className="grid gap-3">
@@ -102,7 +105,7 @@ const EditProfil = ({
                 id="username-1"
                 name="username"
                 className="border-borderrounded-xl "
-                defaultValue={`@${DummyUser.username}`}
+                defaultValue={`@${currentUser?.username}`}
                 disabled
               />
               <span className="text-muted-foreground text-[10px] px-2 font-poppins -mt-2">
@@ -118,7 +121,7 @@ const EditProfil = ({
                 type="email"
                 name="email"
                 className="border-border rounded-xl "
-                defaultValue={`${DummyUser.email}`}
+                defaultValue={`${currentUser?.email}`}
                 onChange={handleEmailChange}
               />
             </div>

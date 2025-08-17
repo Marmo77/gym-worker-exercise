@@ -1,8 +1,12 @@
 import BaseLayout from "./BaseLayout";
 import Navbar from "./Navbar";
 
-const MainLayout = () => {
-  return <BaseLayout NavbarComponent={<Navbar />} />;
+interface MainLayoutProps {
+  onLogout: () => void;
+}
+
+const MainLayout = ({ onLogout }: MainLayoutProps) => {
+  return <BaseLayout NavbarComponent={<Navbar onLogout={onLogout} />} />;
 };
 
 export default MainLayout;

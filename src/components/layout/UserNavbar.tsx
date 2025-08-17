@@ -1,6 +1,6 @@
 import React, { useState, type ReactNode } from "react";
-import { Share2, Settings, MoveLeft, Move, X } from "lucide-react";
-import DummyUser from "../../storage/Users";
+import { Share2, Settings, MoveLeft, Move, X, LogOut } from "lucide-react";
+import { getUserFromStorage } from "../../storage/Users";
 import { useLocation } from "react-router-dom";
 
 const iconMap = {
@@ -12,14 +12,16 @@ interface UserNavbarIconProps {
   iconType: "arrow" | "close";
   BackTo: string;
   LocalisationBack: string;
+  onLogout: () => void;
 }
 function UserNavbar({
   iconType,
   BackTo,
   LocalisationBack,
+  onLogout,
 }: UserNavbarIconProps) {
   const icon = iconMap[iconType];
-
+  const currentUser = getUserFromStorage();
   const phnm = useLocation().pathname;
 
   return (
@@ -38,17 +40,17 @@ function UserNavbar({
             <div className="flex gap-2.5 font-poppins">
               <span
                 className={
-                  DummyUser.status === "user"
+                  currentUser?.status === "user"
                     ? "text-primary"
-                    : DummyUser.status === "premium"
+                    : currentUser?.status === "premium"
                     ? "text-premium"
-                    : DummyUser.status === "admin"
+                    : currentUser?.status === "admin"
                     ? "text-admin"
                     : "text-accent-foreground"
                 }
               >
                 {phnm === "/user"
-                  ? `${DummyUser.name}`
+                  ? `${currentUser?.name || "User"}`
                   : phnm === "/user/training"
                   ? "Training Plan"
                   : "Unknown"}
