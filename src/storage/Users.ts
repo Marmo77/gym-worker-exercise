@@ -27,8 +27,8 @@ export interface UserInfoBadge {
 // User profiles
 export const USER_PROFILES = {
   admin: {
-    username: "admin",
-    name: "Super Admin",
+    username: "BestAdmin1337",
+    name: "Marius Chadsky",
     status: "admin" as const,
     email: "admin@gymapp.com",
     exercise_completed: 95,
@@ -40,16 +40,17 @@ export const USER_PROFILES = {
       "Analytics Review",
       "System Maintenance",
     ],
-    friends: ["john_tomato22", "petrchecz", "mariusz_pudzianator"],
+    friends: ["john_tomato22", "petrchecz", "lisa_queen"],
     days_on_app: 365,
     data_of_join: "2023-01-01",
     localization: "Poland",
     current_streak: 30,
     best_streak: 45,
   },
+  // IF you are reading it, yes i know profile pictures are created at UserPanel.tsx and there are only 2 of them, but its only showcasing, so be kind with it :D
   user: {
-    username: "user",
-    name: "Regular User",
+    username: "JohnyLamborghini97",
+    name: "Johny Ferrari",
     status: "user" as const,
     email: "user@gymapp.com",
     exercise_completed: 41,
@@ -61,7 +62,13 @@ export const USER_PROFILES = {
       "Stay shaped",
       "Add your Friend",
     ],
-    friends: ["john_tomato22", "petrchecz"],
+    friends: [
+      "john_tomato22",
+      "petrchecz",
+      "Gibi2010PL",
+      "alice_spark",
+      "TheodorDuck",
+    ],
     days_on_app: 30,
     data_of_join: "2023-05-19",
     localization: "Germany",
@@ -69,6 +76,39 @@ export const USER_PROFILES = {
     best_streak: 12,
   },
 };
+
+interface Friend {
+  id: number;
+  username: string;
+  name: string;
+  status: "admin" | "user" | "premium";
+}
+
+export const Friends: Friend[] = [
+  { id: 1, username: "john_tomato22", name: "John Tomato", status: "premium" },
+  { id: 2, username: "petrchecz", name: "Peter Checz", status: "user" },
+  { id: 3, username: "alice_spark", name: "Alice Sparkle", status: "admin" },
+  { id: 4, username: "Gibi2010PL", name: "Gibi The Great", status: "premium" },
+  { id: 5, username: "lisa_queen", name: "Lisa Queenbee", status: "user" },
+  { id: 6, username: "TheodorDuck", name: "Theo Duckling", status: "user" },
+  {
+    id: 7,
+    username: "EddieSteak99",
+    name: "Eddie Steaklover",
+    status: "premium",
+  },
+  { id: 8, username: "kevinSmith", name: "Kevin Smooth", status: "admin" },
+  { id: 9, username: "nina_wave", name: "Nina Wavy", status: "user" },
+  {
+    id: 10,
+    username: "PudzianowskiPoland",
+    name: "Strongman Pudzian",
+    status: "premium",
+  },
+];
+
+export const AdminList = ["BestAdmin1337", "Admin21"];
+// yes i know its hardcoded, and you can change it into a localstorage, but its for demnostatration and it prevent you only from seeing AdminPanel.tsx, so it works (partialy).
 
 // Local storage management
 export const USER_STORAGE_KEY = "currentUser";
