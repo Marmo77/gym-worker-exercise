@@ -41,13 +41,14 @@ And track progress of your friends too! 🪩🥳
     ✅ - Make Quick Actions, actually working
 
     - Make working Add Training Plan (localstorage the data - exercise,name, sets,reps,weight)
+    - Featured Exercise copy data and push into a new Add Training plan already done exercise
     - Create Footer with links to social media, and GitHub repository.
     - add "Admin" an Admin panel with options to add users, delete users, edit users, etc.
     - Make whole website full responsive
 
 # - The plan to end this project is 2:30 am 18.08.2025
 note: its 3:33am and i finished half of it and thanks to (vibe Code - Cursor) in those tabs, 'cous im sleepy and it will took me to 6 am to make it, but i was into programming and having fun rn. :D
-# - The plan to end this project is just at 18/19(night).08.2025
+# - The plan to end this project is just at 18/19(night ).08.2025
 
 ----------------------
 
