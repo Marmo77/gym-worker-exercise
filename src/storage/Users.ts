@@ -71,6 +71,36 @@ export const USER_PROFILES = {
   },
 };
 
+interface Friend {
+  id: number;
+  username: string;
+  name: string;
+  status: "admin" | "user" | "premium";
+}
+
+export const Friends: Friend[] = [
+  { id: 1, username: "john_tomato22", name: "John Tomato", status: "premium" },
+  { id: 2, username: "petrchecz", name: "Peter Checz", status: "user" },
+  { id: 3, username: "alice_spark", name: "Alice Sparkle", status: "admin" },
+  { id: 4, username: "Gibi2010PL", name: "Gibi The Great", status: "premium" },
+  { id: 5, username: "lisa_queen", name: "Lisa Queenbee", status: "user" },
+  { id: 6, username: "TheodorDuck", name: "Theo Duckling", status: "user" },
+  {
+    id: 7,
+    username: "EddieSteak99",
+    name: "Eddie Steaklover",
+    status: "premium",
+  },
+  { id: 8, username: "kevinSmith", name: "Kevin Smooth", status: "admin" },
+  { id: 9, username: "nina_wave", name: "Nina Wavy", status: "user" },
+  {
+    id: 10,
+    username: "PudzianowskiPoland",
+    name: "Strongman Pudzian",
+    status: "premium",
+  },
+];
+
 export const AdminList = ["BestAdmin1337", "Admin21"];
 // yes i know its hardcoded, and you can change it into a localstorage, but its for demnostatration and it prevent you only from seeing AdminPanel.tsx, so it works (partialy).
 
