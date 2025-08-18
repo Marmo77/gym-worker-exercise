@@ -36,15 +36,13 @@ And track progress of your friends too! 🪩🥳
     ✅ - Share Profile button -> copy link to github repository. 
     ✅ - Change User Profile Pictures (Admin, User)
     ✅- "Add a Friend" system, where you can send friend request to users.
-    - Make for User schedule with days that you have already trained. 
-    - on /user menu with buttons showing (achievements, friends, Workouts Exercise History)
+    ✅- on /user menu with buttons showing (achievements, friends, Workouts Exercise History)
+    ✅- Make for User schedule with days that you have already trained. (in /user 3rd tab)
+    ✅ - Make Quick Actions, actually working
+    
     - Make working Add Training Plan (localstorage the data - exercise,name, sets,reps,weight)
-    - Create fake schedule plan that user was training.
-
     - Create Footer with links to social media, and GitHub repository.
-
     - add "Admin" an Admin panel with options to add users, delete users, edit users, etc.
-    50/50 - Make Quick Actions, actually working
     - Make whole website full responsive
 
 # - The plan to end this project is 2:30 am 18.08.2025
