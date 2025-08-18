@@ -11,7 +11,7 @@ import {
 import React, { useState, useEffect, useRef } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Calendar as CalendarComponent } from "@/components/ui/calendar";
-import { getUserFromStorage, Friends } from "@/storage/Users";
+import { getUserFromStorage, Friends, USER_PROFILES } from "@/storage/Users";
 import { format } from "date-fns";
 import AddFriend from "@/components/AddFriend";
 
@@ -256,12 +256,12 @@ const UserActivities = ({ defaultTab = "friends" }: UserActivitiesProps) => {
                   <h3 className="text-lg font-semibold">
                     Friends ({friendsData.length})
                   </h3>
-                                     <div 
-                     className="bg-blue-300 flex items-center gap-2 px-3 py-1 rounded-2xl text-sm font-medium click-pressed cursor-pointer hover:bg-blue-400 transition-colors"
-                     onClick={() => setOpenAddFriendDialog(true)}
-                   >
-                     <Plus className="w-4 h-4" /> Add Friend
-                   </div>
+                  <div
+                    className="bg-blue-300 flex items-center gap-2 px-3 py-1 rounded-2xl text-sm font-medium click-pressed cursor-pointer hover:bg-blue-400 transition-colors"
+                    onClick={() => setOpenAddFriendDialog(true)}
+                  >
+                    <Plus className="w-4 h-4" /> Add Friend
+                  </div>
                 </div>
                 <div className="p-4 space-y-3">
                   {friendsData.map((friend) => (
@@ -497,17 +497,17 @@ const UserActivities = ({ defaultTab = "friends" }: UserActivitiesProps) => {
               </div>
             </div>
           </div>
-                 </TabsContent>
-       </Tabs>
-       
-       {/* AddFriend Dialog */}
-       <AddFriend
-         open={openAddFriendDialog}
-         onClose={() => setOpenAddFriendDialog(false)}
-         setOpen={setOpenAddFriendDialog}
-       />
-     </div>
-   );
- };
+        </TabsContent>
+      </Tabs>
+
+      {/* AddFriend Dialog */}
+      <AddFriend
+        open={openAddFriendDialog}
+        onClose={() => setOpenAddFriendDialog(false)}
+        setOpen={setOpenAddFriendDialog}
+      />
+    </div>
+  );
+};
 
 export default UserActivities;

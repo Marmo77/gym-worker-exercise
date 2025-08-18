@@ -68,7 +68,7 @@ const Stats: Statistics[] = [
     id: 6,
     title: "Goals Achieved",
     icon: <Goal className="img-big" />,
-    value: currentUser?.goals.length || 0,
+    value: (currentUser?.goals.length ?? 1) - 1,
     color: "orange",
   },
 ];
