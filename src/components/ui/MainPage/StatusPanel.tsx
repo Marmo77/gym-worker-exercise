@@ -14,8 +14,11 @@ import {
 import { AdminList, getUserFromStorage } from "../../../storage/Users";
 import AdminPanel from "@/components/AdminPanel";
 import AddFriend from "@/components/AddFriend";
+import { useNavigate } from "react-router-dom";
 
 const StatusPanel = () => {
+  const navigate = useNavigate();
+  
   const quickactions = [
     {
       title: "Add Exercise",
@@ -44,15 +47,17 @@ const StatusPanel = () => {
       button_color: "bg-chart-3/90 hover:bg-chart-3 ",
       function: () => {
         console.log(quickactions.at(2)?.title);
+        navigate("/user?tab=history");
       },
     },
     {
-      title: "Statistic",
-      description: "Raport about your training",
+      title: "Achievements",
+      description: "See your achievements!",
       icon: <ChartColumnIncreasing className="img-small" />,
       button_color: "bg-chart-4/90 hover:bg-chart-4",
       function: () => {
         console.log(quickactions.at(3)?.title);
+        navigate("/user?tab=achievements");
       },
     },
   ];

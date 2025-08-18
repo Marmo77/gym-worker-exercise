@@ -5,10 +5,12 @@ import UserProfileCard from "./ui/UserPage/UserProfileCard";
 import EditProfil from "./ui/UserPage/EditProfil";
 import UserStatistics from "./ui/UserPage/UserStatistics";
 import AddTrainingPlan from "./ui/UserPage/AddTrainingPlan";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
+import UserActivities from "./ui/UserPage/UserActivities";
 
 const UserPanel = () => {
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
 
   const currentUser = getUserFromStorage();
   const [user, setUser] = useState(localStorage.getItem("UserStatus") || null);
@@ -16,6 +18,10 @@ const UserPanel = () => {
     // load user type from localStorage on mount
   }, [user]);
   const [editOpen, setEditOpen] = useState(false);
+
+  // Get the tab from URL parameters
+  const tabParam = searchParams.get('tab');
+  const defaultTab = tabParam === 'achievements' || tabParam === 'history' ? tabParam : 'friends';
 
   const handleLogingout = () => {
     localStorage.removeItem("UserStatus");
@@ -54,6 +60,7 @@ const UserPanel = () => {
         <AddTrainingPlan navigate={navigate} />
       </section>
       <EditProfil open={editOpen} onOpenChange={setEditOpen} />
+      <UserActivities defaultTab={defaultTab} />
     </>
   );
 };
